@@ -1,0 +1,1003 @@
+* {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  box-sizing: border-box;
+}
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #4e4e4e;
+  padding: 10px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.logo img {
+  margin-right: 30px;
+
+  height: 100px;
+  width: auto;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu .nav-li {
+  margin: 0 10px;
+  
+}
+
+.menu .nav-li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-family: "Poetsen One", sans-serif;
+  font-size: 25px;
+}
+
+.search {
+  display: flex;
+  
+  align-items: center;
+  margin-left: auto;
+}
+
+.search input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  width: 350px;
+  font-family: "Poetsen One", sans-serif;
+}
+
+.btn-button button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Poetsen One", sans-serif;
+  margin-right: 30px;
+
+}
+
+.btn-button button:hover {
+  background-color: #555;
+}
+.login{
+  margin-right: 40px;
+
+}
+.login-cart {
+  display: flex;
+  align-items: center;
+}
+
+.login-cart > div {
+  margin-left: 10px;
+  color: #ffffff;
+  font-family: "Poetsen One", sans-serif;
+  font-size: 20px;
+}
+
+.login-cart .nav-item {
+  cursor: pointer;
+}
+
+.login:hover {
+  color: #13ff1f;
+}
+
+.heart:hover {
+  color: #ee0063;
+}
+
+.cart:hover {
+  color: red;
+}
+
+
+/* header {
+  background-color: #4e4e4e;
+  color: #fff;
+padding: 10px;
+height: 140px;
+}
+
+.logo {
+float: left;
+}
+
+.logo img {
+height: 100px;
+width: auto;
+}
+
+nav ul {
+width: 300px;
+list-style-type: none;
+}
+
+.menu {
+text-align: center;
+align-items: center;
+justify-items: center;
+margin-left: 50px;
+margin-top: 30px;
+float: left;
+text-decoration: none;
+}
+
+
+.home{
+margin-right: 35px;
+}
+.product-menu {
+margin-right: 20px;
+
+}
+
+.contact {
+margin-right: 20px;
+display: flex;
+}
+
+.blog {
+margin-right: 20px;
+}
+
+.nav-li {
+font-family: "Poetsen One", sans-serif;
+
+font-size: 25px;
+color: #ffffff;
+display: inline;
+text-decoration: none;
+
+
+
+}
+
+.nav-li:hover{
+  color: #13ff1f;
+}
+
+
+
+nav ul {
+display: inline;
+margin-right: 10px;
+}
+
+
+.login-cart {
+font-family: "Poetsen One", sans-serif;
+
+}
+
+
+.login {
+margin-left: 50px;
+
+margin-top: 30px;
+font-size: 20px;
+
+float: left;
+}
+
+.login:hover{
+  color: #13ff1f;
+}
+
+.heart {
+margin-top: 30px;
+font-size: 20px;
+margin-left: 90px;
+float: left;
+
+}
+.heart:hover{
+  color: #ee0063;
+}
+
+.gach {
+  margin-top: 23px;
+  font-size: 30px;
+  margin-left: 10px;
+  float: left;
+
+}
+
+.cart {
+font-size: 20px;
+margin-top: 30px;
+
+float: left;
+
+margin-left: 10px;
+color: #fff;
+}
+.cart:hover{
+  color: red;
+}
+.search input {
+font-family: "Poetsen One", sans-serif;
+
+float: right;
+width: 500px;
+height: 30px;
+margin-left: 40px;
+margin-right: 5px;
+padding: 5px;
+margin-top: 30px;
+border: 1px solid #ccc;
+}
+
+.search {
+
+float: left;
+display: flex;
+}
+
+.search button {
+font-family: "Poetsen One", sans-serif;
+
+text-align: center;
+padding: 5px 10px;
+background-color: #333;
+color: #fff;
+border: none;
+margin-top: 30px;
+
+} */
+
+.slider {
+margin-bottom: 20px;
+width: 100%;
+height: 500px;
+overflow: hidden;
+}
+
+.slider-container {
+display: flex;
+animation: slide 18s infinite;
+}
+
+
+
+.slider-img-1 {
+width: 100%;
+}
+
+.slider-img-2 {
+width: 100%;
+
+}
+
+.slider-img-3 {
+width: 100%;
+
+}
+
+
+
+@keyframes slide {
+0% {
+  transform: translateX(0);
+}
+33.33% {
+  transform: translateX(-100%);
+}
+66.66% {
+  transform: translateX(-200%);
+}
+100% {
+  transform: translateX(-0%);
+}
+}
+
+footer {
+
+background-color: #000000;
+color: #fff;
+
+padding: 10px;
+}
+
+.row-cat-pro {
+
+
+margin-right: 20px;
+display: flex;
+
+}
+
+.row-product-all{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.product-category {
+
+padding: 20px;
+
+}
+
+.product-link{
+
+  text-decoration: none;
+  color: #000000;
+}
+.product-link h3:hover{
+  color: #13ff1f;
+}
+.sub-category-list {
+list-style-type: none;
+padding: 0;
+margin: 0;
+}
+
+.sub-category-list li {
+border: 1px solid #ccc;
+padding: 10px;
+margin-bottom: 10px;
+}
+
+.product-list {
+display: flex;
+flex-wrap: wrap;
+text-align: center;
+justify-content: space-between;
+
+}
+.product-list-all{
+text-align: center;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+justify-items: center;
+}
+
+.product-new{
+text-align: center;
+h2{
+  font-size: 33px;
+  font-family: "Poetsen One", sans-serif;
+
+}
+}
+.product {
+
+width: 30%;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 5px;
+margin-bottom: 20px;
+margin-top: 20px;
+h5{
+  margin-bottom: 10px;
+  color: rgb(255, 0, 0);
+  font-size: 16px;
+  font-family: "Poetsen One", sans-serif;
+
+}
+
+}
+
+.product img {
+width: 100%;
+height: auto;
+margin-bottom: 10px;
+}
+
+
+.col-3 {
+margin-left: 10px;
+margin-right: 20px;
+flex-basis: 25%;
+border: 1px solid #ccc;
+border-radius: 5px;
+h1{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: "Poetsen One", sans-serif;
+
+  text-align: center;
+}
+h2{
+  
+  font-family: "Poetsen One", sans-serif;
+
+}
+h3{
+  
+    font-family: "Poetsen One", sans-serif;
+
+  }  
+}
+
+.col-9 {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+flex-basis: 75%;
+h3{
+  font-family: "Poetsen One", sans-serif;
+
+}
+
+h2{
+  font-size: 33px;
+
+  font-family: "Poetsen One", sans-serif;
+
+  text-align: center;
+}
+}
+
+.col-product-all{
+
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+width: 70%;
+h3{
+  
+  font-family: "Poetsen One", sans-serif;
+
+}  
+
+}
+
+.post-new{
+  padding: 20px;
+border: 1px solid #ccc;
+border-radius: 5px;
+margin: 20px;
+h2{
+  font-size: 33px;
+
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: "Poetsen One", sans-serif;
+
+}
+}
+.post-row {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+
+.post-main {
+flex-basis: 50%;
+padding: 20px;
+}
+
+.post-sidebar {
+flex-basis: 50%;
+/* background-color: #000000; */
+padding: 20px;
+}
+
+
+.post {
+
+width: auto;
+margin-bottom: 20px;  padding: 20px;
+border: 1px solid #ccc;
+border-radius: 5px;
+margin-bottom: 20px;
+img{
+  width: 100%;
+}
+
+h3{
+  font-family: "Poetsen One", sans-serif;
+
+}
+p{
+font-family: "Teachers", sans-serif;
+
+}
+}
+.post-small{
+width: auto;
+margin-bottom: 20px;  padding: 20px;
+border: 1px solid #ccc;
+border-radius: 5px;
+margin-bottom: 20px;
+img{
+  width: 20%;
+}
+h3{
+  font-family: "Poetsen One", sans-serif;
+
+}
+}
+.post h3 {
+margin-top: 0;
+
+
+
+
+}
+
+
+/* Your existing CSS styles */
+
+.contact {
+padding: 20px;
+}
+
+.contact h2 {
+text-align: center;
+}
+
+.contact-info {
+  
+  padding: 20px;
+border: 1px solid #ccc;
+border-radius: 5px;    margin-left: 40px;
+h2{
+  font-family: "Poetsen One", sans-serif;
+}
+p{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+}
+
+.contact-form {
+  
+  margin-left: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+width: 100%;
+
+h2{
+  font-family: "Poetsen One", sans-serif;
+
+}
+}
+
+.form-group {
+margin-bottom: 20px;
+width: 500px;
+margin-left: 35px;
+}
+
+label {
+font-weight: bold;
+font-family: "Poetsen One", sans-serif;
+
+}
+
+input,
+textarea {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+
+
+
+  
+.btn-contact button{
+  width: 90px;
+  height: 31px;
+  border-radius: 5px;
+  background-color: rgb(7, 6, 1);
+  color: #f2f2f2;
+  margin-left: 35px;
+  border: #000000     ;
+
+  font-family: "Poetsen One", sans-serif;
+
+}
+.btn-contact button:hover {
+ 
+  background-color: #45a049;
+}
+
+.btn-button button{
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+}
+.btn-button button:hover {
+ 
+background-color: #45a049;
+}
+
+.google-map {
+margin-top: 20px;
+text-align: center;
+
+/* Add any additional styling for the Google Map container */
+}
+.ggmap{
+  margin-top: 20px;
+width: 700px;
+height: 300px;
+}
+/* Your existing CSS styles */
+
+footer {
+background-color: #2b2828;
+  padding: 20px 0;
+}
+
+.footer-container {
+display: flex;
+justify-content: space-between;
+max-width: 1200px;
+margin: 0 auto;
+h4{
+  font-family: "Poetsen One", sans-serif;
+
+}
+p{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+li{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+}
+
+.footer-column {
+flex-basis: 30%;
+}
+
+.footer-column h4 {
+font-size: 18px;
+margin-bottom: 10px;
+}
+
+.footer-column p {
+margin-bottom: 5px;
+}
+
+.footer-column ul {
+list-style: none;
+padding: 0;
+}
+
+.footer-column ul li {
+margin-bottom: 5px;
+}
+
+.footer-column ul li a {
+color: #a48888;
+text-decoration: none;
+}
+
+.footer-bottom {
+text-align: center;
+margin-top: 20px;
+}
+
+.footer-bottom p {
+font-size: 14px;
+color: #777;
+}
+
+
+.productfillter {
+padding: 20px;
+}
+
+.filter-sort {
+margin-left: 900px;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 20px;
+}
+
+.filter-sort label {
+margin-right: 10px;
+}
+
+.filter-sort select {
+padding: 5px;
+}
+
+
+
+.row-detail{
+
+display: flex;
+border: 1px solid #ccc;
+border-radius: 5px;
+padding: 20px;
+margin: 20px;
+}
+.row-img{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex-basis: 50%;
+  padding: 20px;
+margin-right:20px ;
+img{
+  width: 70%;
+}
+
+
+}
+.row-info{
+
+flex-basis: 50%;
+padding: 20px;
+h1{
+  margin-bottom: 20px;
+
+  font-family: "Poetsen One", sans-serif;
+
+}
+p{
+  font-size: 20px;
+  font-weight:600;
+}
+
+h3{
+  margin-top: 10px;
+  width: 400px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+h5{
+  margin-top: 10px;
+}
+}
+.row-mua{
+
+  padding: 20px;
+  margin-top: 130px;
+}
+.mb-muangay{
+
+width: 100px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #000000;
+color: #f2f2f2;
+margin-right: 10px;
+border-radius: 4px;
+
+}
+.row-add{
+  
+margin-top: 10px;
+width: 100%;
+display: flex;
+
+}
+.qty{
+  margin-bottom: 20px;
+  margin-left: 6px;
+  font-size: 20px;
+}
+.plus-min{
+  
+ margin-left: 5px;
+margin-bottom: 0px;
+}
+.input-detail{
+  float: left;
+  margin-right: 9px;
+  width: 125px;
+  margin-left: 5px;
+}
+
+.plus{
+  float: left;
+border-radius: 4px;
+
+margin-left: 5px;
+margin-right: 5px;
+text-align: center;  display: flex;
+justify-content: center;
+align-items: center;
+width: 37px;
+font-size: 20px;
+height: 37px;
+background-color: #45a049;
+}
+
+.min{
+border-radius: 4px;
+font-size: 30px;
+
+
+text-align: center;  
+display: flex;
+justify-content: center;
+align-items: center;
+width: 37px;
+height: 37px;
+background-color: #45a049;
+}
+.checkout{
+  margin-left: 10px;
+  background-color: #ff0000;
+      color: #ffffff;
+      width: 100px;
+      height: 50px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      margin-right: 10px;
+      
+
+}
+.addcart button{
+  color: white;
+  width: 130px;
+  height: 50px;
+  background-color: #13ff1f;
+  border-radius: 10px;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.btn-color-1 button{
+  margin-top: 10px;
+  margin-left: 100px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  border: #000000;
+  background-color: #dbd40e;
+  float: left;
+
+
+}
+.btn-color-2 button{
+  margin-top: 10px;
+
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  border: #000000;
+  background-color: #ead8d68f;
+  float: left;
+
+
+
+}
+.btn-color-3 button{
+  margin-top: 10px;
+
+  float: left;
+  margin-left: 5px;
+
+  width: 20px;
+
+  height: 20px;
+  border-radius: 50px;
+  border: #000000;
+  background-color: #050101;
+
+
+}
+/* .btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-container button {
+  margin: 0 5px;
+} */
+
+/* 
+.btn-color button:hover{
+  background-color: #ee0063;
+} */
+
+
+.btn-category button{
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgb(141, 133, 133) ;
+  background-color: #f2f2f2;
+  border-radius: 50px;
+  float: left;
+  margin-right: 7px;
+
+}
+  
+
+.btn-category button:active{
+  background-color: rgb(231, 7, 7);
+  color: #050101;
+  text-decoration: none;
+}
+
+
+  
+  
+.btn-category button:hover{
+  background-color: rgb(251, 2, 2);
+  text-decoration: none;
+}
+
+
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+.image-container img {
+  display: block;
+}
+.image-container i {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ color: rgb(212, 31, 31);
+ border:  1px solid rgb(156, 169, 169);
+ background-color: #ffffff;
+  width: 27px;
+  height: 27px;
+  border-radius: 50px;
+  position: absolute;
+  top: 10%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+
+}
+.image-container i:hover{
+  color: #273029;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-container button {
+  margin: 0 5px; /* Tùy chỉnh khoảng cách giữa các button */
+}
