@@ -1,4 +1,8 @@
+ 
  <div class="category_product-col1">
+
+
+    
     <h1>Category</h1>
 
 
@@ -51,6 +55,39 @@
             </li>
         </ul>
     </section>
+    <section class="product-category">
+        <h2> Color</h2>
+        <ul class="sub-category-list">
+            <li><a href="">
+
+                    <div class="btn-red"><button></button></div>
+                </a>
+                <h3> Red</h3>
+
+            </li>
+            <li>
+                <div class="btn-blue"><button></button></div>
+
+                <h3>Blue</h3>
+            </li>
+            <li>
+                <div class="btn-yelow"><button></button></div>
+
+                <h3>Yelow</h3>
+            </li>
+            <li>
+                <div class="btn-white"><button></button></div>
+
+                <h3>Gray</h3>
+            </li>
+            <li>
+                <div class="btn-green"><button></button></div>
+
+                <h3>Green</h3>
+            </li>
+        </ul>
+    </section>
+
         <section class="productfillter">
             <div class="filter-sort">
                 <div class="filter-cat">

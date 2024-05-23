@@ -10,6 +10,7 @@
 </head>
 <body>
     
+    
     <div class="product-new">
 
 @foreach($product as $product)
