@@ -25,21 +25,9 @@
                 </div>
                 <div class="post-sidebar">
                     <h2>Related Posts</h2>
-                    <div class="post-small">
-                        <img src="./img/plants-lamp-desk.jpg">
-                        <h3>Related Post 1</h3>
-                        <p>Related Post 2 Content</p>
-                    </div>
-                    <div class="post-small">
-                        <img src="./img/plants-lamp-desk.jpg">
-                        <h3>Related Post 2</h3>
-                        <p>Related Post 2 Content</p>
-                    </div>
-                    <div class="post-small">
-                        <img src="./img/plants-lamp-desk.jpg">
-                        <h3>Related Post 3</h3>
-                        <p>Related Post 3 Content</p>
-                    </div>
+                    <x-postcard/>
+                    <x-postcard/>
+                    <x-postcard/>
                 </div>
             </div>
         </section>

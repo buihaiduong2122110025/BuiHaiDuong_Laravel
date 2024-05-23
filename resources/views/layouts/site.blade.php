@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('css/layoutsite.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/css1.css') }}">
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
@@ -22,61 +22,28 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poetsen+One&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap"
         rel="stylesheet">
-        <link rel="stylesheet" href="/path/to/font-awesome/css/all.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/path/to/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 
 </head>
 
 <body>
+
     <div>
         <div>
-            {{-- <header>
-                <div>
-                    <div>
-                        <div class="logo">
-                            <a  href="{{ route('home') }}">
-                                <img src="./img/Amy Furniture (1).png" alt="Logo">
-                            </a>
-                        </div>
-                        <ul class="menu">
-                            <li class="nav-li home"><a class="nav-li" href="{{ route('home') }}">Home</a></li>
-
-                            <li class="nav-li product-menu"><a class="nav-li" href="product">Product</a></li>
-                            <li class="nav-li contact"><a class="nav-li" href="contact">Contact</a></li>
-                            <li class="nav-li blog"><a class="nav-li" href="blog">Blog</a></li>
-                        </ul>
-                    </div>
-
-
-                    <div class="search">
-                        <input type="text" placeholder="Tìm kiếm...">
-                        <div class="btn-button"><button >Tìm</button></div>
-                    </div>
-                    <div class="login-cart">
-
-                        <div class="login "><i class="fas fa-user nav-item"></i></i> </div>
-                        <div class="heart"><i class="fas fa-heart nav-item"></i> </div>
-
-                        <div class="gach">/ </div>
-
-                        <div class="cart"> <i class="fas fa-cart-arrow-down"></i></div>
-                        
-
-                    </div>
-                </div>
-            </header> --}}
+            {{-- 
             <header>
                 <div class="header-container">
                     <div class="logo">
                         <a href="{{ route('home') }}">
-                            <img src="./img/Amy Furniture (1).png" alt="Logo">
+                            <img src="./img/logo-2.png" alt="Logo">
                         </a>
                     </div>
-                    <ul class="menu">
+                    <ul class="menu">                       
                         <li class="nav-li home"><a class="nav-li" href="{{ route('home') }}">Home</a></li>
                         <li class="nav-li product-menu"><a class="nav-li" href="product">Product</a></li>
-                        <li class="nav-li contact"><a class="nav-li" href="contact">Contact</a></li>
+                        <li class="nav-li contact-menu"><a class="nav-li" href="contact">Contact</a></li>
                         <li class="nav-li blog"><a class="nav-li" href="blog">Blog</a></li>
                     </ul>
                     <div class="search">
@@ -90,8 +57,36 @@
                     </div>
                 </div>
             </header>
-            
-            
+             --}}
+
+            <header>
+                <div class="logo">
+                    <a href="{{ route('home') }}">
+                        <img src="./img/logo2.png" alt="Logo">
+                    </a>
+                </div>
+              
+                <nav>
+                    <ul>
+                        <li>
+                            <div class="search">
+                                <input type="text" placeholder="Tìm kiếm...">
+                                <div class="btn-button"><button>Tìm</button></div>
+                            </div>
+                        </li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
+                        <li><a href="product">Product</a></li>
+                        <li><a href="contact">Contact</a></li>
+                        <li><a href="blog">Blog</a></li>
+                        <li><a href="login">Login</a></li>
+                        <li><a href="cart">Cart</a></li>
+
+                    </ul>
+                </nav>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </header>
         </div>
     </div>
 
@@ -135,6 +130,15 @@
         </div>
     </footer>
     @yield('footer')
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    </script>
 </body>
 
 </html>
