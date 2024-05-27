@@ -10,6 +10,7 @@
 </head>
 <body>
     
+
     
     <div class="product-new">
 
@@ -39,7 +40,9 @@
         </div>
     
     </div>
-
+<div class="text-center ">
+<h1 class="text-danger">wgfyewegfud</h1>
+</div>
 </div>
     @endforeach
     

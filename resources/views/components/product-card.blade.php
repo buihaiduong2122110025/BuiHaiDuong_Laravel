@@ -5,8 +5,14 @@
             <i class="fas fa-heart"></i>
         </div>
         <h3>Product 1</h3>
+        <h5>$50</h5>
     </a>
-    <h5>$100</h5>
+    <div class="price-sale">
+      
+        <h5 class="price-gacc">$100</h5>
+        <h5 class="price-phamtram">-50%</h5>
+
+    </div>
     <div class="btn-container">
         <div class="btn-color-1">
             <button> </button>

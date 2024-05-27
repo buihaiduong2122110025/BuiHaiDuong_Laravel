@@ -5,6 +5,7 @@
         <div class="post-main">
             <h2>Main Post</h2>
             <div class="post">
+                <a href="post">
                 <img src="./img/plants-desk.jpg">
                 <h3>Main Post Title</h3>
                 <p>We regularly research to ensure that these retail prices represent realistic prices on comparable
@@ -15,6 +16,7 @@
                     Notwithstanding the comparable retail price information provided, if this is an important factor
                     for you
                     in your purchasing decision, we recommend you also conduct your own individual research.</p>
+                </a>
             </div>
         </div>
         <div class="post-sidebar">
