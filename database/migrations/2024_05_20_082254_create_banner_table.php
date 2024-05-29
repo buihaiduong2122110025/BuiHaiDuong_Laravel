@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('link',1000);
             $table->unsignedInteger('sort_order')->default(1);
             $table->string('position',50);
+            $table->string('image', 1000)->nullable();
             $table->text('description',255)->nullable();
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by')->nullable();

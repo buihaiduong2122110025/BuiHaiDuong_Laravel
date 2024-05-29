@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="{{ asset('css/css.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/css1.css') }}">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,14 +18,20 @@
 <div class="product-list">
     <div class="product">
         <a class="product-link" href="product-detail">
+            {{ $product->id }}
+
             <div class="image-container">
-                <img src="{{$product->image}}" alt="Product 4">
+                <img src="./img/<?= $product->image; ?>" alt="Product 4">
                 <i class="fas fa-heart"></i>
             </div>
             <h3>{{ $product->name }}</h3>
         </a>
         <h5>${{ $product->price }}</h5>
         <h5>${{ $product->pricesale }}</h5>
+        <h5>${{ $product->slug}}</h5>
+
+        <h5>${{ $product->description}}</h5>
+
 
         <div class="btn-container">
             <div class="btn-color-1">
@@ -40,10 +46,10 @@
         </div>
     
     </div>
-<div class="text-center ">
-<h1 class="text-danger">wgfyewegfud</h1>
+
 </div>
-</div>
+
+
     @endforeach
     
     </div>

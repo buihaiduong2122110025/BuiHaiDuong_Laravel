@@ -1,0 +1,17 @@
+/* .datarow .function_style
+{
+    visibility: hidden;
+}
+.datarow:hover .function_style
+{
+    visibility: visible;
+}
+
+.text-admin{
+    font-size: 30px;
+} */
+
+.a.text-admin{
+
+    color: rgb(192, 9, 9);
+}
