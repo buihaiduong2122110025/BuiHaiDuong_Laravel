@@ -41,7 +41,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend/order/create');
+
     }
 
     /**
@@ -57,7 +58,12 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $list = Orderdetail::join('product', 'orderdetail.product_id', '=', 'product.id')
+        ->join('order', 'orderdetail.order_id', '=', 'order.id')
+        ->select("orderdetail.*", "product.name as product_name", "order.id as order_id")
+        ->get();
+       
+        return view('backend.orderdetail.show',compact("list"));
     }
 
     /**

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Quản Trị')
+@section('title', 'User')
 @section('content')
     <div>
 
@@ -28,7 +28,7 @@
                                             class="fas fa-trash"></i> Thùng rác</a>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <a href="index.php?option=user&cat=create" class="btn btn-sm btn-primary">Thêm thành
+                                    <a href="{{ route('admin.user.create') }}" class="btn btn-sm btn-primary" class="btn btn-sm btn-primary">Thêm thành
                                         viên</a>
 
                                 </div>

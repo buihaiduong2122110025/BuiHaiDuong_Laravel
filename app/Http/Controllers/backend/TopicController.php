@@ -27,7 +27,8 @@ class TopicController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend/topic/create');
+
     }
 
     /**
@@ -43,7 +44,12 @@ class TopicController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
+        $list = Topic::where('status','!=',0)
+        ->orderBy('created_at','DESC')
+        ->select("id","description","name","slug")
+        ->get();
+    return view('backend/topic/show',compact("list"));
     }
 
     /**

@@ -26,7 +26,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend/post/create');
+
     }
 
     /**
@@ -42,7 +43,12 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $list = Post::leftJoin('topic', 'post.topic_id', '=', 'topic.id')
+        ->where('post.status', '!=', 0)
+        ->orderBy('post.created_at', 'desc')
+        ->select("post.*", "topic.name as topic_name")
+        ->get();
+           return view('backend/post/show',compact("list"));
     }
 
     /**

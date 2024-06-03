@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Quản Trị')
+@section('title', 'Post')
 @section('content')
 <div>
    
@@ -28,7 +28,7 @@
                        </div>
      
                        <div class="col-sm-6 text-right">
-                          <a href="index.php?option=post&cat=create" class="btn btn-sm btn-primary">Thêm bài viết</a>
+                        <a href="{{ route('admin.post.create') }}" class="btn btn-sm btn-primary">Thêm bài viết</a>
                        </div>
                     </div>
                  </div>

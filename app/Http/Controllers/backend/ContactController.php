@@ -26,7 +26,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend/contact/create');
     }
 
     /**
@@ -42,7 +42,11 @@ class ContactController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $list = Contact::where('status','!=',0)
+        ->orderBy('created_at','DESC')
+        ->select("category.*")
+        ->get();
+    return view('backend/category/show',compact("list"));
     }
 
     /**

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Quản Trị')
+@section('title', 'Product')
 @section('content')
     <div>
         <form action="index.php?option=row&cat=process" method="post" enctype="multipart/form-data">
@@ -28,7 +28,7 @@
                                 </div>
 
                                 <div class="col-sm-6 text-right">
-                                    <a href="index.php?option=row&cat=create" class="btn btn-sm btn-primary">Thêm sản
+                                    <a href="{{ route('admin.product.create') }}" class="btn btn-sm btn-primary" class="btn btn-sm btn-primary">Thêm sản
                                         phẩm</a>
                                 </div>
                             </div>

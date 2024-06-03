@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Quản Trị')
+@section('title', 'Menu')
 @section('content')
 <div>
 
@@ -30,14 +30,14 @@
   
                     <div class="row">
                        <div class="col-md-3">
-                          <div class="accordion" id="accordionExample">
-                             <div class="card mb-0 p-3">
+                          <div class="accordion " id="accordionExample">
+                             <div class="card mb-0 p-3  bg-dark">
                                 <select name="position" class="form-control">
                                    <option value="mainmenu">Main Menu</option>
                                    <option value="footermenu">Footer Menu</option>
                                 </select>
                              </div>
-                             <div class="card mb-0">
+                             <div class="card mb-0  bg-dark">
                                 <div class="card-header" id="headingCategory">
                                    <strong data-toggle="collapse" data-target="#collapseCategory" aria-expanded="true"
                                       aria-controls="collapseCategory">
@@ -64,7 +64,7 @@
                              </div>
                              <form action ="index.php?option=menu&cat=process" method="post" enctype="multipart/form-data">
      
-                             <div class="card mb-0">
+                             <div class="card mb-0  bg-dark">
                                 <div class="card-header" id="headingBrand">
                                    <strong data-toggle="collapse" data-target="#collapseBrand" aria-expanded="true"
                                       aria-controls="collapseBrand">
@@ -91,7 +91,7 @@
                                 </div>
                              </div>
                              </form>
-                             <div class="card mb-0">
+                             <div class="card mb-0  bg-dark">
                                 <div class="card-header" id="headingTopic">
                                    <strong data-toggle="collapse" data-target="#collapseTopic" aria-expanded="true"
                                       aria-controls="collapseTopic">
@@ -116,7 +116,7 @@
                                    </div>
                                 </div>
                              </div>
-                             <div class="card mb-0">
+                             <div class="card mb-0  bg-dark">
                                 <div class="card-header" id="headingP">
                                    <strong data-toggle="collapse" data-target="#collapsePage" aria-expanded="true"
                                       aria-controls="collapsePage">
@@ -141,7 +141,7 @@
                                    </div>
                                 </div>
                              </div>
-                             <div class="card mb-0">
+                             <div class="card mb-0 bg-dark">
                                 <div class="card-header" id="headingCustom">
                                    <strong data-toggle="collapse" data-target="#collapseCustom" aria-expanded="true"
                                       aria-controls="collapseCustom">
@@ -168,7 +168,7 @@
                           </div>
                        </div>
                        <div class="col-md-9">
-                          <table class="table table-bordered">
+                          <table class="table table-bordered table-hover">
                              <thead class="bg-dark">
                                 <tr class="bg-dark">
                                    <th class="text-center bg-dark" style="width:30px;">
@@ -178,7 +178,7 @@
                                    <th class="text-center bg-dark" >Liên kết</th>
                                    <th class="text-center bg-dark" >Vị trí</th>
                                    <th class="text-center bg-dark" style="width:170px">Chức năng</th>
-                          <th class="text-center" style="width:30px">ID</th>
+                          <th class="text-center bg-dark" style="width:30px">ID</th>
                                 </tr>
                              </thead>
                              <tbody>

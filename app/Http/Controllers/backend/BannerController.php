@@ -28,7 +28,21 @@ class BannerController extends Controller
      */
     public function create()
     {
-        //
+        // $banner=new Banner();
+        // $banner->name=request('name');
+        // $banner->link=request('link');
+        // $banner->position=request('position');
+        // $banner->sort_order=request('sort_order');
+        // $banner->image=request('image');
+        // $banner->created_by=request('created_by');
+
+
+        // $banner->status=request('status');
+        // $banner->save();
+        // return view('backend/banner/create',compact("banner"));
+
+
+
     }
 
     /**
@@ -44,7 +58,13 @@ class BannerController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+        $list = Banner::where('status', '!=', 0)
+        ->orderBy('created_at','DESC')
+        ->select("banner.*", )
+        ->get();
+        return view('backend/banner/show',compact("list"));
+
     }
 
     /**

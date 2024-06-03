@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Quản Trị')
+@section('title', 'Banner')
 @section('content')
 <div>
     <form action="index.php?option=banner&cat=process" method="post" enctype="multipart/form-data">
@@ -26,7 +26,7 @@
                           <a href="index.php?option=banner&cat=trash" class="btn btn-danger btn-sm">  <i class="fas fa-trash"></i> Thùng rác</a>
                        </div>
                        <div class="col-md-6 text-right">
-                       <a href="index.php?option=banner&cat=create" class="btn btn-sm btn-primary">  <i class="fa fa-plus" aria-hidden="true"></i>Thêm banner</a>
+                       <a href="{{ route('admin.banner.create') }}" class="btn btn-sm btn-primary">  <i class="fa fa-plus" aria-hidden="true"></i>Thêm banner</a>
        
                        </div>
                     </div>

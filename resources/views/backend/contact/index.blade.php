@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Quản Trị')
+@section('title', 'Contact')
 @section('content')
     <div>
         <form action="index.php?option=contact&cat=create" method="contact" enctype="multipart/form-data">
@@ -28,7 +28,7 @@
                                 </div>
 
                                 <div class="col-sm-6 text-right">
-                                    <a href="index.php?option=contact&cat=create" class="btn btn-sm btn-primary"> <i
+                                    <a href="{{ route('admin.contact.create') }}" class="btn btn-sm btn-primary" class="btn btn-sm btn-primary"> <i
                                             class="fa fa-plus" aria-hidden="true"></i>Thêm liên hệ</a>
                                 </div>
                             </div>

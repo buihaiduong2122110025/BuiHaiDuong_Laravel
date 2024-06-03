@@ -26,7 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend/user/create');
+
     }
 
     /**
@@ -42,7 +43,12 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+            
+        $list = User::where('status','!=',0)
+        ->orderBy('created_at','DESC')
+        ->select("user.*")
+        ->get();
+    return view('backend/user/show',compact("list"));
     }
 
     /**

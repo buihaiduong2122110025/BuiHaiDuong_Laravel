@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Quản Trị')
+@section('title', 'Order')
 @section('content')
 <div>
 
@@ -34,7 +34,7 @@
                           <i class="fas fa-trash"></i> Thùng rác</a>
                     </div>
                     <div class="col-sm-6 text-right">
-                       <a href="index.php?option=order&cat=create" class="btn btn-sm btn-primary">Thêm đơn hàng</a>
+                     <a href="{{ route('admin.order.create') }}" class="btn btn-sm btn-primary" class="btn btn-sm btn-primary">Thêm đơn hàng</a>
                     </div>
                  </div>
               </div>
@@ -62,20 +62,20 @@
                                    <input type="checkbox" />
                                 <td class="text-center">
                                    <div class="deliveryname"></div>
-                                   {{ $row->name }}
+                                   {{ $row->name }}{{ $row->delivery_name }}
                                 </td>
                                 <td class="text-center">
                                    <div class="deliveryemail"></div>
-                                   {{ $row->email  }}
+                                   {{ $row->email  }}{{ $row->delivery_email }}
                                 </td>
                                 <td class="text-center">
                                    <div class="deliveryphone"></div>
-                                   {{ $row->phone }}
+                                   {{ $row->phone }}{{ $row->delivery_phone }}
 
                                 </td>
                                 <td class="text-center">
                                    <div class="deliveryaddress"></div>
-                                   {{ $row->address }}
+                                   {{ $row->address }}{{ $row->delivery_address }}
                                 </td>
                                  {{-- <td class="text-center">
                                     <div class="user_id"></div>

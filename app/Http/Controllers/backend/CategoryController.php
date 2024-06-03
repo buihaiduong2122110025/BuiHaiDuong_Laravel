@@ -16,10 +16,10 @@ class CategoryController extends Controller
 
         $list = Category::where('status','!=',0)
         ->orderBy('created_at','DESC')
-        ->select("id","image","name","slug")
+        ->select("category.*")
         ->get();
     return view('backend/category/index',compact("list"));
-    // }
+    
     }
 
     /**
@@ -43,7 +43,11 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $list = Category::where('status','!=',0)
+        ->orderBy('created_at','DESC')
+        ->select("category.*")
+        ->get();
+    return view('backend/category/show',compact("list"));
     }
 
     /**

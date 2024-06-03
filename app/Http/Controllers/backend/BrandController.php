@@ -17,7 +17,7 @@ class BrandController extends Controller
 
         $list = Brand::where('status','!=',0)
         ->orderBy('created_at','DESC')
-        ->select("id","image","name","slug")
+        ->select("brand.*")
         ->get();
     return view('backend/brand/index',compact("list"));
  
@@ -28,7 +28,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -44,7 +44,12 @@ class BrandController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
+        $list = Brand::where('status','!=',0)
+        ->orderBy('created_at','DESC')
+        ->select("brand.*")
+        ->get();
+    return view('backend/brand/show',compact("list"));
     }
 
     /**

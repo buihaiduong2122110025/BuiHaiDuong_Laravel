@@ -29,7 +29,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend/product/create');
+
     }
 
     /**
@@ -45,7 +46,13 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $list = Product::join('category', 'product.category_id', '=', 'category.id')
+        ->join('brand', 'product.brand_id', '=', 'brand.id')
+        ->where('product.status', '!=', 0)
+        ->orderBy('product.created_at', 'desc')
+        ->select("product.*", "category.name as category_name", "brand.name as brand_name")
+        ->get();
+            return view('backend/product/show',compact("list"));
     }
 
     /**

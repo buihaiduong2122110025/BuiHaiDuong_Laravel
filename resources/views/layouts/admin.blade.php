@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title')</title>
+    <title>Admin @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/backend.css') }}">
 
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
@@ -209,7 +209,7 @@
                               </a>
                             </li>
                             <li class="nav-item">
-                              <a href="../tables/data.html" class="nav-link">
+                              <a href="{{ route('admin.user.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Thêm thành viên</p>
                               </a>
