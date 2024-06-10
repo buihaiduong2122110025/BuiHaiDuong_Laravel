@@ -2,8 +2,8 @@
 @section('title', 'Quản Trị')
 @section('content')
 <div>
-    <form action="index.php?option=post&cat=process" method="post" enctype="multipart/form-data">
-
+   <form action="{{ route('admin.post.store') }}" method="post" enctype="multipart/form-data">
+      @csrf
         <div class="content-wrapper">
            <section class="content-header">
               <div class="container-fluid">
@@ -31,16 +31,25 @@
                        <div class="col-md-9">
                           <div class="mb-3">
                              <label>Tiêu đề bài viết (*)</label>
-                             <input type="text" name="title" placeholder="Nhập name" class="form-control">
+                             <input type="text" name="title" placeholder="Nhập name" class="form-control"  value="{{ old('name') }}">
+                             @error('title')
+                             <span class="text-danger">{{ $message }}</span>
+                         @enderror
                           </div>
                           <div class="mb-3">
                                    <label>Slug</label>
                                    <input type="text" placeholder="Nhập slug" name="slug" class="form-control">
                                 </div>
-                          <div class="mb-3">
-                             <label>Kiểu bài viết</label>
-                             <textarea   name="type" placeholder="Nhập Kiểu bài viết" class="form-control"></textarea>
-                          </div>
+
+                                <div class="mb-3">
+                                 <label>Kiểu bài viết</label>
+                                 <select name="type" class="form-control">
+                                    <option value="1">Post</option>
+                                    <option value="2">Page</option>
+
+                                 </select>
+                              </div>
+                          
                           <div class="mb-3">
                              <label>Mô tả</label>
                              <textarea name="description" placeholder="Nhập mô tả" class="form-control"></textarea>
@@ -56,6 +65,8 @@
                              <label>Chủ đề (*)</label>
                              <select name="topic_id" class="form-control">
                                 <option value="0">None</option>
+                                {!! $topic_id_html !!}
+
                              </select>
                           </div>
                           <div class="mb-3">

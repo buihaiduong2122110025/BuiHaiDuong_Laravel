@@ -2,7 +2,8 @@
 @section('title', 'Quản Trị')
 @section('content')
 <div>
-    <form action ="index.php?option=product&cat=process" method="post" enctype="multipart/form-data">
+   <form action="{{ route('admin.product.store') }}" method="post" enctype="multipart/form-data">
+      @csrf
         <div class="content-wrapper">
            <section class="content-header">
               <div class="container-fluid">
@@ -31,8 +32,13 @@
                        <div class="col-md-9">
                           <div class="mb-3">
                              <label>Tên sản phẩm (*)</label>
-                             <input type="text" placeholder="Nhập tên sản phẩm" name="name" class="form-control">
-                          </div>
+                           
+                             <input type="text" placeholder="Nhập tên sản phẩm" name="name" class="form-control"  value="{{ old('name') }}">
+                          
+                             @error('name')
+                                 <span class="text-danger">{{ $message }}</span>
+                             @enderror
+                           </div>
                           <div class="mb-3">
                              <label>Slug</label>
                              <input type="text" placeholder="Nhập slug" name="slug" class="form-control">
@@ -43,6 +49,9 @@
                                    <label>Danh mục (*)</label>
                                    <select name="category_id" class="form-control">
                                       <option value="">Chọn danh mục</option>
+                                      {!! $category_id_html !!}
+
+
                                    </select>
                                 </div>
                              </div>
@@ -51,6 +60,9 @@
                                    <label>Thương hiệu (*)</label>
                                    <select name="brand_id" class="form-control">
                                       <option value="">Chọn thương hiệu</option>
+
+                                      {!! $brand_id_html !!}
+
                                    </select>
                                 </div>
                              </div>

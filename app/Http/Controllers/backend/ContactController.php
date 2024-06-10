@@ -13,8 +13,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $list = Contact::orderBy('Created_at', 'DESC')
-        ->select("contact.*", )
+        $list = Contact::where('status','!=',0)
+        ->orderBy('Created_at', 'DESC')
+        ->select("id","name","email","phone","title","status", )
         ->get();
         
         return view('backend/contact/index',compact("list"));
@@ -44,9 +45,9 @@ class ContactController extends Controller
     {
         $list = Contact::where('status','!=',0)
         ->orderBy('created_at','DESC')
-        ->select("category.*")
+        ->select("contatc.*")
         ->get();
-    return view('backend/category/show',compact("list"));
+    return view('backend/contact/show',compact("list"));
     }
 
     /**

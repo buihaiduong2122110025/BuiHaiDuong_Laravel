@@ -5,7 +5,8 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 class BannerController extends Controller
 {
     /**
@@ -16,7 +17,7 @@ class BannerController extends Controller
 
         $list = Banner::where('status', '!=', 0)
         ->orderBy('created_at','DESC')
-        ->select("banner.*", )
+        ->select("id","image","name","link" ,"position","status")
         ->get();
 
     return view('backend/banner/index',compact("list"));
@@ -39,7 +40,7 @@ class BannerController extends Controller
 
         // $banner->status=request('status');
         // $banner->save();
-        // return view('backend/banner/create',compact("banner"));
+        return view('backend/banner/create');
 
 
 
@@ -50,7 +51,26 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $banner = new Banner();
+        $banner->name = $request->name;
+        $banner->link = $request->link;
+        $banner->position = $request->position;
+
+        $banner->description = $request->description;
+        //up anh
+        if ($request->image) {
+            $fileName = date('YmdHis') . '.' . $request->image->extension();
+            $request->image->move(public_path('img/banners/'), $fileName);
+            $banner->image = $fileName;
+        }
+        //end
+
+        $banner->status = $request->status;
+        $banner->created_at = date('Y-m-d H:i:s');
+        $banner->created_by = Auth::id() ?? 1;
+
+        $banner->save();
+        return redirect()->route('admin.banner.index');
     }
 
     /**
@@ -59,11 +79,8 @@ class BannerController extends Controller
     public function show(string $id)
     {
 
-        $list = Banner::where('status', '!=', 0)
-        ->orderBy('created_at','DESC')
-        ->select("banner.*", )
-        ->get();
-        return view('backend/banner/show',compact("list"));
+        $banner =  Banner::find($id);
+        return view('backend/banner/show',compact("banner"));
 
     }
 

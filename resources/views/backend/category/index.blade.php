@@ -3,7 +3,8 @@
 @section('content')
     <div>
 
-        <form action="index.php?option=row&cat=process" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin.category.store') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="content-wrapper">
                 <section class="content-header">
                     <div class="container-fluid">
@@ -41,7 +42,10 @@
                                     <div class="mb-3">
                                         <label>Tên danh mục (*)</label>
                                         <input type="text" name="name" id="name" placeholder="Nhập tên danh mục"
-                                            class="form-control" onkeydown="handle_slug(this.value);">
+                                            class="form-control" value="{{ old('name') }}">
+                                        @error('name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label>Slug</label>
@@ -54,14 +58,17 @@
                                     </div>
                                     <div class="mb-3">
                                         <label>Danh mục cha (*)</label>
-                                        <select name="parent_id" class="form-control">
-                                            <option value="0">none</option>
+                                        <select name="parent_id" id="parent_id" class="form-control">
+                                            <option value="0">None</option>
+                                            {!! $htmlparentid !!}
                                         </select>
                                     </div>
                                     <div class="mb-3">
                                         <label>Sắp Xếp</label>
-                                        <select name="sort_order" class="form-control">
-                                            <option value="1">1</option>
+                                        <select name="sort_order" id="sort_order" class="form-control">
+                                            <option value="1"></option>
+                                            {!! $htmlsortorder !!}
+
                                         </select>
                                     </div>
                                     <div class="mb-3">
@@ -93,6 +100,9 @@
                                         <tbody>
 
                                             @foreach ($list as $row)
+                                                @php
+                                                    $args =  ['id' => $row->id];
+                                                @endphp
                                                 <tr>
                                                     <td class="text-center">
                                                         <input type="checkbox" />
@@ -106,27 +116,33 @@
                                                     </td>
                                                     <td class="text-center"> {{ $row->slug }}</td>
                                                     <td class="text-center">
-
-                                                        {{-- <a href="{{ route('admin.category.status', ['id' => $row->id]) }}"
-                                                            class="btn btn-sm btn-dark">
-                                                            <i class="fas fa-toggle-off"></i>
-                                                        </a> --}}
-                                                        <a href="{{ route("admin.category.status",['id'=>$row->id]) }}" class="btn btn-sm btn-success">
-                                                     <i class="fas fa-toggle-on"></i>
-                                                  </a>
-                                                        <a href="{{ route('admin.category.show', ['id' => $row->id]) }}"
+                                                        @if ($row->status == 2)
+                                                            <a href="{{ route('admin.category.status', $args) }}"
+                                                                class="btn btn-sm btn-dark">
+                                                                <i class="fas fa-toggle-off"></i>
+                                                            </a>
+                                                        @else
+                                                            <a href="{{ route('admin.category.status', $args) }}"
+                                                                class="btn btn-sm btn-success">
+                                                                <i class="fas fa-toggle-on"></i>
+                                                            </a>
+                                                        @endif
+                                                        <a href="{{ route('admin.category.show', $args) }}"
                                                             class="btn btn-sm btn-info">
                                                             <i class="far fa-eye"></i>
                                                         </a>
-                                                        <a href="{{ route('admin.category.edit', ['id' => $row->id]) }}"
+                                                        <a href="{{ route('admin.category.edit', $args) }}"
                                                             class="btn btn-sm btn-primary">
                                                             <i class="far fa-edit"></i>
                                                         </a>
-                                                        <a href="{{ route('admin.category.delete', ['id' => $row->id]) }}"
+                                                        <a href="{{ route('admin.category.delete', $args) }}"
                                                             class="btn btn-sm btn-danger">
                                                             <i class="fas fa-trash"></i>
                                                         </a>
-                                                    <td class="text-center">{{  $row->id  }}</td>
+
+                                                    <td class="text-center">
+                                                       {{$row->id}}
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

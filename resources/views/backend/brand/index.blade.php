@@ -3,7 +3,8 @@
 @section('content')
     <div>
 
-        <form action="index.php?option=brand&cat=process" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin.brand.store') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="content-wrapper">
                 <section class="content-header">
                     <div class="container-fluid">
@@ -43,7 +44,11 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label>Tên thương hiệu (*)</label>
-                                        <input type="text" name="name" placeholder="Nhập name" class="form-control">
+                                        <input type="text" name="name" placeholder="Nhập name"
+                                            value="{{ old('name') }}" class="form-control">
+                                        @error('name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label>Slug</label>
@@ -51,12 +56,17 @@
                                     </div>
                                     <div class="mb-3">
                                         <label>Mô tả</label>
-                                        <textarea name="description" placeholder="Nhập mô  tả" class="form-control"></textarea>
+                                        <textarea name="description" placeholder="Nhập mô  tả" class="form-control" value="{{ old('description') }}"></textarea>
+                                        @error('description')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label>Sắp Xếp</label>
                                         <select name="sort_order" class="form-control">
                                             <option value="1">1</option>
+                                            {!! $htmlsortorder !!}
+
                                         </select>
                                     </div>
                                     <div class="mb-3">
@@ -87,6 +97,9 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($list as $row)
+                                                @php
+                                                    $args = ['id' => $row->id];
+                                                @endphp
                                                 <tr>
                                                     <td class="text-center">
                                                         <input type="checkbox" />
@@ -99,23 +112,26 @@
                                                         {{ $row->name }} </td>
                                                     <td class="text-center"> {{ $row->slug }}</td>
                                                     <td class="text-center">
-                                                        {{-- <a href="index.php?option=brand&cat=status&id=<?= $brand->id ?>"
-                                                            class="btn btn-sm btn-dark">
-                                                            <i class="fas fa-toggle-off"></i>
-                                                        </a> --}}
-                                                        <a href="{{ route('admin.brand.status', ['id' => $row->id]) }}"
-                                                            class="btn btn-sm btn-success">
-                                                            <i class="fas fa-toggle-on"></i>
-                                                        </a>
-                                                        <a href="{{ route('admin.brand.show', ['id' => $row->id]) }}"
+                                                        @if ($row->status == 2)
+                                                            <a href="{{ route('admin.brand.status', $args) }}"
+                                                                class="btn btn-sm btn-dark">
+                                                                <i class="fas fa-toggle-off"></i>
+                                                            </a>
+                                                        @else
+                                                            <a href="{{ route('admin.brand.status', $args) }}"
+                                                                class="btn btn-sm btn-success">
+                                                                <i class="fas fa-toggle-on"></i>
+                                                            </a>
+                                                        @endif
+                                                        <a href="{{ route('admin.brand.show', $args) }}"
                                                             class="btn btn-sm btn-info">
                                                             <i class="far fa-eye"></i>
                                                         </a>
-                                                        <a href="{{ route('admin.brand.edit', ['id' => $row->id]) }}"
+                                                        <a href="{{ route('admin.brand.edit', $args) }}"
                                                             class="btn btn-sm btn-primary">
                                                             <i class="far fa-edit"></i>
                                                         </a>
-                                                        <a href="{{ route('admin.brand.delete', ['id' => $row->id]) }}"
+                                                        <a href="{{ route('admin.brand.delete', $args) }}"
                                                             class="btn btn-sm btn-danger">
                                                             <i class="fas fa-trash"></i>
                                                         </a>

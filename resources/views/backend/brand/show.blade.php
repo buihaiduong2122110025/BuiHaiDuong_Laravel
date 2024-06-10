@@ -9,7 +9,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
+                <div class="brand mb-2">
                     <div class="col-sm-6">
                         <strong class="text-dark text-lg">CHI TIẾT THƯƠNG HIỆU</strong>
                     </div>
@@ -24,10 +24,10 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <div class="row">
+                    <div class="brand">
                         <div class="col-md-12 text-right">
                             <a class="btn btn-sm btn-info"   href="{{ route('admin.brand.index') }}">
-                                <i class="fas fa-arrow-left"></i> Về danh sách
+                                <i class="fas fa-arbrand-left"></i> Về danh sách
                             </a>
                         </div>
                     </div>
@@ -35,7 +35,6 @@
                 <div class="card-body">
     
                     <table class="table table-bordered">
-                        @foreach ($list as $row)
 
                         <tr>
                             <th>Tên trường</th>
@@ -44,7 +43,7 @@
                         <tr>
                             <td> id</td>
                             <td>
-                                {{ $row->id }}
+                                {{ $brand->id }}
                             </td>
                         </tr>
     
@@ -52,68 +51,68 @@
                                 
                             <td> Tên thương hiệu</td>
                             <td>
-                                {{ $row->name }}
+                                {{ $brand->name }}
 
                             </td>
                         </tr>
                         <tr>
                             <td> Slug </td>
                             <td>
-                                {{ $row->slug }}
+                                {{ $brand->slug }}
                             </td>
                         </tr>
                         <tr>
                             <td> description </td>
                             <td>
-                                {{ $row->description }}
+                                {{ $brand->description }}
                             </td>
                         </tr>
                         <tr>
                             <td> sort_order	</td>
                             <td>
-                                {{ $row->sort_order }}
+                                {{ $brand->sort_order }}
                             </td>
                         </tr>
                         <tr>
                         <tr>
                             <td>image</td>
-                            <td>   <img src="{{ asset('img/brands/' . $row->image) }}"
-                                class="img-fluid" alt="{{ $row->image }}"></td>
+                            <td>   <img src="{{ asset('img/brands/' . $brand->image) }}"
+                                class="img-fluid" alt="{{ $brand->image }}"></td>
                         </tr>
     
                         <tr>
                             <td> Ngày tạo </td>
                             <td>
-                                {{ $row->created_at }}
+                                {{ $brand->created_at }}
                             </td>
                         </tr>
                         <tr>
                             <td> Người tạo </td>
                             <td>
-                                {{ $row->created_by }}
+                                {{ $brand->created_by }}
                             </td>
                         </tr>
                         <tr>
                             <td> Người cập nhật </td>
                             <td>
                                 
-                                {{ $row->updated_by }}
+                                {{ $brand->updated_by }}
                             </td>
                         </tr>
                         <tr>
                             <td> Ngày cập nhật </td>
                             <td>
-                                {{ $row->updated_at }}
+                                {{ $brand->updated_at }}
                             </td>
                         </tr>
                         <tr>
                             <td> Trạng thái </td>
                             <td>
-                                {{ $row->status }}
+                                {{ $brand->status }}
                             </td>
 
                         </tr>
-                        @endforeach
+                        
 
                     </table>
                 </div>

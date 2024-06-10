@@ -7,7 +7,7 @@
         <div class="content-wrapper">
             <section class="content-header">
                 <div class="container-fluid">
-                    <div class="row mb-2">
+                    <div class="banner mb-2">
                         <div class="col-sm-12">
                             <strong class="text-dark text-lg">CHI TIẾT BANNER </strong>
                         </div>
@@ -18,10 +18,10 @@
             <section class="content">
                 <div class="card">
                     <div class="card-header">
-                        <div class="row">
+                        <div class="banner">
                             <div class="col-md-12 text-right">
                                 <a class="btn btn-sm btn-info"     href="{{ route('admin.banner.index') }}">
-                                    <i class="fas fa-arrow-left"></i> Về danh sách
+                                    <i class="fas fa-arbanner-left"></i> Về danh sách
                                 </a>
                             </div>
                         </div>
@@ -38,50 +38,55 @@
                             <tbody>
 
                                 <tr>
-                                    @foreach ($list as $row)
+                                  
                                         <td>ID</td>
-                                        <td>{{ $row->id }}</td>
+                                        <td>{{ $banner->id }}</td>
 
                                 </tr>
                                 <tr>
                                     <td>name</td>
-                                    <td>{{ $row->name }}</td>
+                                    <td>{{ $banner->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Image</td>
+                                    <td>   <img src="{{ asset('img/banners/' . $banner->image) }}"
+                                        class="img-fluid" alt="{{ $banner->image }}" style="width: 60%"></td>
                                 </tr>
                                 <tr>
                                     <td>link</td>
-                                    <td>{{ $row->link }}</td>
+                                    <td>{{ $banner->link }}</td>
                                 </tr>
                                 <tr>
                                     <td>sort_order</td>
-                                    <td>{{ $row->sort_order }}</td>
+                                    <td>{{ $banner->sort_order }}</td>
                                 </tr>
                                 <tr>
                                     <td>position</td>
-                                    <td>{{ $row->position }}</td>
+                                    <td>{{ $banner->position }}</td>
                                 </tr>
 
                                 <tr>
                                     <td>updated_at</td>
-                                    <td>{{ $row->updated_at }}</td>
+                                    <td>{{ $banner->updated_at }}</td>
                                 </tr>
                                 <tr>
                                     <td>updated_by</td>
-                                    <td>{{ $row->updated_by }}</td>
+                                    <td>{{ $banner->updated_by }}</td>
                                 </tr>
                                 <tr>
                                     <td>status</td>
-                                    <td>{{ $row->status }}</td>
+                                    <td>{{ $banner->status }}</td>
                                 </tr>
 
                                 <tr>
                                     <td>created_at</td>
-                                    <td>{{ $row->created_at }}</td>
+                                    <td>{{ $banner->created_at }}</td>
                                 </tr>
                                 <tr>
                                     <td>created_by</td>
-                                    <td>{{ $row->created_by }}</td>
+                                    <td>{{ $banner->created_by }}</td>
                                 </tr>
-                                @endforeach
+                             
                             </tbody>
                         </table>
                     </div>

@@ -17,7 +17,7 @@ class OrderController extends Controller
         $list = Order::join('user', 'order.user_id', '=', 'user.id')
             ->where('order.status', '!=', 0)
             ->orderBy('order.created_at', 'desc')
-            ->select("order.*", "user.id as user_id")
+            ->select("order.id","order.delivery_name","order.delivery_email","order.delivery_phone","order.created_at","order.status", "user.id as user_id")
             ->get();
             return view('backend/order/index',compact("list"));
 

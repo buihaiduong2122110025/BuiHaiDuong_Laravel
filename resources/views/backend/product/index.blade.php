@@ -28,7 +28,8 @@
                                 </div>
 
                                 <div class="col-sm-6 text-right">
-                                    <a href="{{ route('admin.product.create') }}" class="btn btn-sm btn-primary" class="btn btn-sm btn-primary">Thêm sản
+                                    <a href="{{ route('admin.product.create') }}" class="btn btn-sm btn-primary"
+                                        class="btn btn-sm btn-primary">Thêm sản
                                         phẩm</a>
                                 </div>
                             </div>
@@ -53,12 +54,16 @@
 
 
                                     @foreach ($list as $row)
+                                    @php
+                                    $args = ['id' => $row->id];
+                                @endphp
                                         <tr>
                                             <td class="text-center">
                                                 <input type="checkbox" />
                                             </td>
                                             <td class="text-center">
-                                                <img src="{{ asset('img/products/' . $row->image) }}" class="img-fluid"alt="{{ $row->image }}">
+                                                <img src="{{ asset('img/products/' . $row->image) }}"
+                                                    class="img-fluid"alt="{{ $row->image }}">
                                             </td>
                                             <td class="text-center">
                                                 {{ $row->name }}
@@ -66,25 +71,26 @@
                                             <td class="text-center">{{ $row->category_name }} </td>
                                             <td class="text-center">{{ $row->brand_name }} </td>
                                             <td class="text-center">
-
-                                                {{-- <a href="{{ route("admin.product.status",['id'=>$row->id]) }}" class="btn btn-sm btn-dark">
-                                        <i class="fas fa-toggle-off"></i>
-                                     </a> --}}
-
-                                                <a href="{{ route('admin.product.status', ['id' => $row->id]) }}"
+                                                @if ($row->status == 2)
+                                                <a href="{{ route('admin.product.status', $args) }}"
+                                                    class="btn btn-sm btn-dark">
+                                                    <i class="fas fa-toggle-off"></i>
+                                                </a>
+                                                @else
+                                                <a href="{{ route('admin.product.status', $args) }}"
                                                     class="btn btn-sm btn-success">
                                                     <i class="fas fa-toggle-on"></i>
                                                 </a>
-
-                                                <a href="{{ route('admin.product.show', ['id' => $row->id]) }}"
+                                                @endif
+                                                <a href="{{ route('admin.product.show', $args) }}"
                                                     class="btn btn-sm btn-info">
                                                     <i class="far fa-eye"></i>
                                                 </a>
-                                                <a href="{{ route('admin.product.edit', ['id' => $row->id]) }}"
+                                                <a href="{{ route('admin.product.edit', $args) }}"
                                                     class="btn btn-sm btn-primary">
                                                     <i class="far fa-edit"></i>
                                                 </a>
-                                                <a href="{{ route('admin.product.delete', ['id' => $row->id]) }}"
+                                                <a href="{{ route('admin.product.delete', $args) }}"
                                                     class="btn btn-sm btn-danger">
                                                     <i class="fas fa-trash"></i>
                                                 </a>

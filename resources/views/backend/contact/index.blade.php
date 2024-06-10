@@ -28,8 +28,9 @@
                                 </div>
 
                                 <div class="col-sm-6 text-right">
-                                    <a href="{{ route('admin.contact.create') }}" class="btn btn-sm btn-primary" class="btn btn-sm btn-primary"> <i
-                                            class="fa fa-plus" aria-hidden="true"></i>Thêm liên hệ</a>
+                                    <a href="{{ route('admin.contact.create') }}" class="btn btn-sm btn-primary"
+                                        class="btn btn-sm btn-primary"> <i class="fa fa-plus" aria-hidden="true"></i>Thêm
+                                        liên hệ</a>
                                 </div>
                             </div>
                         </div>
@@ -44,13 +45,16 @@
                                         <th class="text-center bg-dark" style="width:160px;">Email</th>
                                         <th class="text-center bg-dark" style="width:160px;">Phone</th>
                                         <th class="text-center bg-dark" style="width:160px;"> Tiêu đề</th>
-                                        <th class="text-center bg-dark" style="width:160px;"> Content</th>
+                                        {{-- <th class="text-center bg-dark" style="width:160px;"> Content</th> --}}
                                         <th class="text-center bg-dark" style="width:160px;">Chức Năng</th>
                                         <th class="text-center bg-dark" style="width:20px;">ID</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($list as $row)
+                                        @php
+                                            $args = ['id' => $row->id];
+                                        @endphp
                                         <tr>
                                             <td class="text-center">
                                                 <input type="checkbox" />
@@ -73,27 +77,31 @@
 
 
 
-                                            <td class="text-center">
+                                            {{-- <td class="text-center">
                                               {{$row->content}}
-                                            </td>
+                                            </td> --}}
                                             <td class="text-center">
-                                                {{-- <a href="{{ route('admin.contact.status', ['id' => $row->id]) }}"
-                                                    class="btn btn-sm btn-dark">
-                                                    <i class="fas fa-toggle-off"></i>
-                                                </a> --}}
-                                                <a href="{{ route('admin.contact.status', ['id' => $row->id]) }}"
-                                                    class="btn btn-sm btn-success">
-                                                    <i class="fas fa-toggle-on"></i>
-                                                </a>
-                                                <a href="{{ route('admin.contact.show', ['id' => $row->id]) }}"
+                                                @if ($row->status == 2)
+                                                    <a href="{{ route('admin.contact.status', $args) }}"
+                                                        class="btn btn-sm btn-dark">
+                                                        <i class="fas fa-toggle-off"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('admin.contact.status', $args) }}"
+                                                        class="btn btn-sm btn-success">
+                                                        <i class="fas fa-toggle-on"></i>
+                                                    </a>
+                                                @endif
+
+                                                <a href="{{ route('admin.contact.show', $args) }}"
                                                     class="btn btn-sm btn-info">
                                                     <i class="far fa-eye"></i>
                                                 </a>
-                                                <a href="{{ route('admin.contact.edit', ['id' => $row->id]) }}"
+                                                <a href="{{ route('admin.contact.edit', $args) }}"
                                                     class="btn btn-sm btn-primary">
                                                     <i class="far fa-edit"></i>
                                                 </a>
-                                                <a href="{{ route('admin.contact.delete', ['id' => $row->id]) }}"
+                                                <a href="{{ route('admin.contact.delete', $args) }}"
                                                     class="btn btn-sm btn-danger">
                                                     <i class="fas fa-trash"></i>
                                                 </a>

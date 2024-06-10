@@ -28,7 +28,8 @@
                                             class="fas fa-trash"></i> Thùng rác</a>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <a href="{{ route('admin.user.create') }}" class="btn btn-sm btn-primary" class="btn btn-sm btn-primary">Thêm thành
+                                    <a href="{{ route('admin.user.create') }}" class="btn btn-sm btn-primary"
+                                        class="btn btn-sm btn-primary">Thêm thành
                                         viên</a>
 
                                 </div>
@@ -54,12 +55,15 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($list as $row)
+                                        @php
+                                            $args = ['id' => $row->id];
+                                        @endphp
                                         <tr>
                                             <td class="text-center">
                                                 <input type="checkbox" />
                                             </td>
                                             <td class="text-center">
-                                                <img src="{{ asset('img/users/' . $row->image) }}"  style="width:50px;"
+                                                <img src="{{ asset('img/users/' . $row->image) }}" style="width:50px;"
                                                     class="img-fluid"alt="{{ $row->image }}">
                                             </td>
                                             <td class="text-center">{{ $row->name }}</td>
@@ -68,22 +72,26 @@
                                             <td class="text-center">{{ $row->roles }}</td>
 
                                             <td class="text-center">
-                                                {{-- <a href="{{ route('admin.topic.status', ['id' => $row->id]) }}" class="btn btn-sm btn-dark">
-                                            <i class="fas fa-toggle-off"></i>
-                                         </a> --}}
-                                                <a href="{{ route('admin.topic.status', ['id' => $row->id]) }}"
-                                                    class="btn btn-sm btn-success">
-                                                    <i class="fas fa-toggle-on"></i>
-                                                </a>
-                                                <a href="{{ route('admin.user.show', ['id' => $row->id]) }}"
-                                                    class="btn btn-sm btn-info">
+                                                @if ($row->status == 2)
+                                                    <a href="{{ route('admin.topic.status', $args) }}"
+                                                        class="btn btn-sm btn-dark">
+                                                        <i class="fas fa-toggle-off"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('admin.user.status', $args) }}"
+                                                        class="btn btn-sm btn-success">
+                                                        <i class="fas fa-toggle-on"></i>
+                                                    </a>
+                                                @endif
+
+                                                <a href="{{ route('admin.user.show', $args) }}" class="btn btn-sm btn-info">
                                                     <i class="far fa-eye"></i>
                                                 </a>
-                                                <a href="{{ route('admin.user.edit', ['id' => $row->id]) }}"
+                                                <a href="{{ route('admin.user.edit', $args) }}"
                                                     class="btn btn-sm btn-primary">
                                                     <i class="far fa-edit"></i>
                                                 </a>
-                                                <a href="{{ route('admin.user.delete', ['id' => $row->id]) }}"
+                                                <a href="{{ route('admin.user.delete', $args) }}"
                                                     class="btn btn-sm btn-danger">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
