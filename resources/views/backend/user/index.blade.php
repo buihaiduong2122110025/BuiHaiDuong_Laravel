@@ -24,7 +24,7 @@
                                     <a href="index.php?option=brand&cat=all" class="btn btn-success btn-sm"> <i
                                             class="fas fa"></i>Tất Cả</a>
 
-                                    <a href="index.php?option=user&cat=trash" class="btn btn-danger btn-sm"> <i
+                                    <a href="{{ route('admin.user.trash') }}" class="btn btn-danger btn-sm"> <i
                                             class="fas fa-trash"></i> Thùng rác</a>
                                 </div>
                                 <div class="col-md-6 text-right">
@@ -73,7 +73,7 @@
 
                                             <td class="text-center">
                                                 @if ($row->status == 2)
-                                                    <a href="{{ route('admin.topic.status', $args) }}"
+                                                    <a href="{{ route('admin.user.status', $args) }}"
                                                         class="btn btn-sm btn-dark">
                                                         <i class="fas fa-toggle-off"></i>
                                                     </a>

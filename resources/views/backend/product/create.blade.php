@@ -79,11 +79,11 @@
                        <div class="col-md-3">
                           <div class="mb-3">
                              <label>Giá bán (*)</label>
-                             <input type="number" value="10000" min="10000" name="price" class="form-control">
+                             <input type="number" value="100" min="1" name="price" class="form-control">
                           </div>
                           <div class="mb-3">
                              <label>Giá sale (*)</label>
-                             <input type="number" value="10000" min="10000" name="pricesale" class="form-control">
+                             <input type="number" value="100" min="1" name="pricesale" class="form-control">
                           </div>
                           <div class="mb-3">
                              <label>Số Lượng</label>

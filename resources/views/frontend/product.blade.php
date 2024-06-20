@@ -3,36 +3,25 @@
 
 
 @section('content')
-
     <div class="row-2">
-    
-<x-productcategory/>
-
-
+        <x-categorysort />
         <div class="row-product-all">
-
             <div class="col-product-all">
                 <section class="product-new">
                     <h2>Products</h2>
                     <div class="product-list-all">
-
-                        <x-productcard />
-                        <x-productcard />
-                        <x-productcard />
-                        <x-productcard />
-                        <x-productcard />
-                        <x-productcard />
-                        <x-productcard />
-                        <x-productcard />
-                        <x-productcard />
-
+                        @foreach ($product_list as $productitem)
+                            <x-productcard :$productitem />
+                        @endforeach
                     </div>
                 </section>
-
-
-
-
+                <div class="col-12 d-flex justify-content-center">
+                    {{ $product_list->links() }}
+    
+                </div>
             </div>
+            
+           
         </div>
     </div>
 @endsection

@@ -2,6 +2,9 @@
 
 namespace App\View\Components;
 
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,6 +24,13 @@ class ProductNew extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.product-new');
+      
+        $product_list = Product::where('product.status', '=', 1)
+            ->orderBy('product.created_at', 'desc')
+            ->limit(3)
+            ->get();
+
+        return view('components.product-new', compact("product_list"));
+        // return view('components.product-new');
     }
 }

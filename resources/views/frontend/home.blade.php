@@ -6,29 +6,14 @@
         <x-slider />
         <div class="container ">
             <div class="product-category-main">
+
                 <x-category-top />
             </div>
             <div class="product-main">
                 <x-productsale />
                 <x-productnew />
-                <section class="product-by-category-top">
-                    <h2>Sofa Products</h2>
-                    <div class="product-category-list">
-                        <x-productcard />
-                        <x-productcard />
-                        <x-productcard />
-                        <x-productcard />
-                    </div>
-                </section>`
-                <section class="product-by-category-top">
-                    <h2>Chair Products</h2>
-                    <div class="product-category-list">
-                        <x-productcard />
-                        <x-productcard />
-                        <x-productcard />
-                        <x-productcard />
-                    </div>
-                </section>
+                <x-productcategoryhome/>
+
             </div>
         </div>
         <x-post />

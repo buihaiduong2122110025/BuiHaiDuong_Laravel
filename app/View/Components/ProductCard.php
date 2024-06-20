@@ -2,6 +2,9 @@
 
 namespace App\View\Components;
 
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -11,9 +14,10 @@ class ProductCard extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $product_item = null;
+    public function __construct($productitem)
     {
-        //
+        $this->product_item =$productitem;
     }
 
     /**
@@ -21,6 +25,9 @@ class ProductCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.product-card');
+
+
+       $product = $this->product_item;
+        return view('components.product-card', compact("product"));
     }
 }

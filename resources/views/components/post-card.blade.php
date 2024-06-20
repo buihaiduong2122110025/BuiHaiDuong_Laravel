@@ -1,5 +1,5 @@
 <div class="post-small">
-    <img src="./img/plants-lamp-desk.jpg">
-    <h3>Related Post 1</h3>
-    <p>Related Post 2 Content</p>
+    <img src="{{ asset('img/posts/' . $post->image) }}" class="img-fluid"alt="{{ $post->image }}">
+    <h3>{{ $post->title }}</h3>
+    <p>{{ $post->detail }}</p>
 </div>

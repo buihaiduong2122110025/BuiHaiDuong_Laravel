@@ -24,7 +24,7 @@
                                     <a href="index.php?option=brand&cat=all" class="btn btn-success btn-sm"> <i
                                             class="fas fa"></i>Tất Cả</a>
 
-                                    <a href="index.php?option=banner&cat=trash" class="btn btn-danger btn-sm"> <i
+                                    <a href="{{ route('admin.banner.trash') }}" class="btn btn-danger btn-sm"> <i
                                             class="fas fa-trash"></i> Thùng rác</a>
                                 </div>
                                 <div class="col-md-6 text-right">
@@ -68,7 +68,7 @@
                                             <div class="mb-3">
                                                 <label>Vị trí</label>
                                                 <select name="position" class="form-control">
-                                                    <option value="slidershow1">slider show 1</option>
+                                                    <option value="slidershow">slider show </option>
                                                     <option value="slidershow2">slider show 2</option>
                                                     <option value="slidershow3">slider show 3</option>
 
@@ -103,8 +103,8 @@
                                         <tbody>
                                             @foreach ($list as $row)
                                                 @php
-                                                    $args = ['id' => $row->id];
-                                                @endphp
+                                                    $args =  ['id' => $row->id];
+                                                    @endphp
                                                 <tr>
                                                     <td class="text-center">
                                                         <input type="checkbox" />
@@ -119,6 +119,7 @@
                                                     </td>
                                                     <td class="text-center"> {{ $row->link }}</td>
                                                     <td class="text-center">
+
                                                         @if ($row->status == 2)
                                                             <a href="{{ route('admin.banner.status', $args) }}"
                                                                 class="btn btn-sm btn-dark">

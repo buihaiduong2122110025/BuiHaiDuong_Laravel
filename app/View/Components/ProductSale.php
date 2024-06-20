@@ -2,6 +2,9 @@
 
 namespace App\View\Components;
 
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,6 +24,11 @@ class ProductSale extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.product-sale');
+        $product_list = Product::where([['status', '=', 1], ['pricesale', '<', '100']])
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('components.product-sale', compact("product_list"));
+        // return view('components.product-sale');
     }
 }

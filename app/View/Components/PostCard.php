@@ -11,9 +11,11 @@ class PostCard extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $post_item = null;
+
+    public function __construct($postitem)
     {
-        //
+        $this->post_item = $postitem;
     }
 
     /**
@@ -21,6 +23,7 @@ class PostCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.post-card');
+        $post = $this->post_item;
+        return view('components.post-card', compact("post"));
     }
 }

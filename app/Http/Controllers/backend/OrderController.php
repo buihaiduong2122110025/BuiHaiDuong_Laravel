@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Orderdetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -41,9 +42,13 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('backend/order/create');
-
+        $list = Order::where('status','!=',0)
+        ->orderBy('created_at','DESC')
+        ->select("id","delivery_name","delivery_email","delivery_phone")
+        ->get();
+        return view("backend.order.create",compact("list"));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -58,35 +63,68 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        $list = Orderdetail::join('product', 'orderdetail.product_id', '=', 'product.id')
+        $orderdetail = Orderdetail::join('product', 'orderdetail.product_id', '=', 'product.id')
         ->join('order', 'orderdetail.order_id', '=', 'order.id')
         ->select("orderdetail.*", "product.name as product_name", "order.id as order_id")
         ->get();
        
-        return view('backend.orderdetail.show',compact("list"));
+        return view('backend.orderdetail.show',compact("orderdetail"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    public function restore(string $id){
+        $order = Order::find($id);
+        if($order==null){
+            return redirect()->route('admin.order.index');
+        }
+        $order->status=2;
+        $order->updated_at=date('Y-m-d H:i:s');
+        $order->updated_by=Auth::id()??1;
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        $order->save();
+        return redirect()->route('admin.order.trash');
     }
+    public function delete(string $id){
+        $order = Order::find($id);
+        if($order==null){
+            return redirect()->route('admin.order.index');
+        }
+        $order->status=0;
+        $order->updated_at=date('Y-m-d H:i:s');
+        $order->updated_by=Auth::id()??1;
 
-    /**
-     * Remove the specified resource from storage.
-     */
+        $order->save();
+        return redirect()->route('admin.order.index');
+    }
+    public function status($id)
+    {
+        $order = Order::find($id);
+        if ($order) {
+            // Đảo ngược trạng thái từ 1 sang 2 và ngược lại
+            $order->status = $order->status == 1 ? 2 : 1;
+            $order->save();
+        }
+
+        return redirect()->route('admin.order.index');
+    }
+    public function trash(){
+        $list = Order::where('status','=',0)
+        ->orderBy('created_at','DESC')
+        ->select("id","delivery_name","delivery_email","delivery_phone")
+        ->get();
+        return view("backend.order.trash",compact("list"));
+    }
     public function destroy(string $id)
     {
-        //
+           $order = Order::find($id);
+        if($order==null){
+            return redirect()->route('admin.order.index');
+        }
+        $order->delete();
+        return redirect()->route('admin.order.trash');
     }
+
+    
 }

@@ -23,7 +23,7 @@
                                     <a href="index.php?option=brand&cat=all" class="btn btn-success btn-sm"> <i
                                             class="fas fa"></i>Tất Cả</a>
 
-                                    <a href="index.php?option=contact&cat=trash" class="btn btn-danger btn-sm">
+                                    <a href="{{ route('admin.contact.trash') }}" class="btn btn-danger btn-sm">
                                         <i class="fas fa-trash"></i> Thùng rác</a>
                                 </div>
 

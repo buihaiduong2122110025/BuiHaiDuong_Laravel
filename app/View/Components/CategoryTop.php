@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Category;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,6 +22,10 @@ class CategoryTop extends Component
      */
     public function render(): View|Closure|string
     {
+        // $list = Category::where('status', '!=', 0)
+        // ->orderBy('created_at', 'desc')
+        // ->limit(3)
+        // ->get();
         return view('components.category-top');
     }
 }

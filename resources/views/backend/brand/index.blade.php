@@ -24,8 +24,8 @@
                                     <a href="index.php?option=brand&cat=all" class="btn btn-success btn-sm"> <i
                                             class="fas fa"></i>Tất Cả</a>
 
-                                    <a href="index.php?option=brand&cat=trash" class="btn btn-danger btn-sm"> <i
-                                            class="fas fa-trash"></i> Thùng rác</a>
+                                            <a class="btn btn-sm btn-danger" href="{{ route('admin.brand.trash') }}">
+                                               </i> Thùng rác</a>
                                 </div>
 
                                 <div class="col-md-6 text-right">

@@ -3,31 +3,7 @@
 @section('content')
     <div>
         <div>
-            @if (session('success'))
-                <div id="success-message" class="alert alert-success">
-                    {{ session('success') }}
-    
-                </div>
-            @endif
-    
-            <script>
-                // Hàm để ẩn thông báo sau 3 giây
-                function hideAlerts() {
-                    var successAlert = document.getElementById('success-message');
-                    var errorAlert = document.getElementById('error-message');
-    
-                    if (successAlert) {
-                        setTimeout(function() {
-                            successAlert.style.display = 'none';
-                        }, 2000);
-                    }
-                }
-    
-                // Gọi hàm ẩn thông báo khi trang được tải
-                document.addEventListener('DOMContentLoaded', function() {
-                    hideAlerts();
-                });
-            </script>
+
             <form action="{{ route('admin.menu.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="content-wrapper">
@@ -55,14 +31,14 @@
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-12 text-right">
-                                        <a class="btn btn-sm btn-danger" href="#">
+                                        <a class="btn btn-sm btn-danger" href="{{ route('admin.menu.trash') }}">
                                             <i class="fas fa-trash"></i> Thùng rác
                                         </a>
                                     </div>
                                 </div>
                             </div>
-    
-                            <div class="card-body " >
+
+                            <div class="card-body ">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="accordion bg-dark" id="accordionExample">
@@ -73,16 +49,18 @@
                                                     <option value="footermenu">Footer Menu</option>
                                                 </select>
                                             </div>
-    
+
                                             <div class="card bg-dark">
-                                                <div class="card-header  text-decoration-none link-unstyled" id="headingCategory">
-                                                    <a class="d-block text-decoration-none text-light" data-toggle="collapse" data-target="#collapseCategory"
+                                                <div class="card-header  text-decoration-none link-unstyled"
+                                                    id="headingCategory">
+                                                    <a class="d-block text-decoration-none text-light"
+                                                        data-toggle="collapse" data-target="#collapseCategory"
                                                         aria-expanded="true" aria-controls="collapseCategory">
                                                         Danh mục
                                                     </a>
                                                 </div>
-                                                <div id="collapseCategory" class="collapse" aria-labelledby="headingCategory"
-                                                    data-parent="#accordionExample">
+                                                <div id="collapseCategory" class="collapse"
+                                                    aria-labelledby="headingCategory" data-parent="#accordionExample">
                                                     <div class="card-body">
                                                         @foreach ($list_category as $category)
                                                             <div class="form-check mb-2">
@@ -103,10 +81,11 @@
                                                 </div>
                                             </div>
                                             <!-- end card -->
-    
+
                                             <div class="card bg-dark">
                                                 <div class="card-header" id="headingBrand">
-                                                    <a class="d-block text-decoration-none text-light" data-toggle="collapse" data-target="#collapseBrand"
+                                                    <a class="d-block text-decoration-none text-light"
+                                                        data-toggle="collapse" data-target="#collapseBrand"
                                                         aria-expanded="true" aria-controls="collapseBrand">
                                                         Thương hiệu
                                                     </a>
@@ -116,8 +95,9 @@
                                                     <div class="card-body">
                                                         @foreach ($list_brand as $brand)
                                                             <div class="form-check mb-2">
-                                                                <input class="form-check-input" type="checkbox" name="brands[]"
-                                                                    value="{{ $brand->id }}" id="brandId{{ $brand->id }}">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    name="brands[]" value="{{ $brand->id }}"
+                                                                    id="brandId{{ $brand->id }}">
                                                                 <label class="form-check-label"
                                                                     for="brandId{{ $brand->id }}">
                                                                     {{ $brand->name }}
@@ -132,10 +112,11 @@
                                                 </div>
                                             </div>
                                             <!-- end card -->
-    
+
                                             <div class="card bg-dark">
                                                 <div class="card-header" id="headingTopic">
-                                                    <a class="d-block text-decoration-none text-light" data-toggle="collapse" data-target="#collapseTopic"
+                                                    <a class="d-block text-decoration-none text-light"
+                                                        data-toggle="collapse" data-target="#collapseTopic"
                                                         aria-expanded="true" aria-controls="collapseTopic">
                                                         Chủ đề
                                                     </a>
@@ -162,10 +143,11 @@
                                                 </div>
                                             </div>
                                             <!-- end card -->
-    
+
                                             <div class="card bg-dark">
                                                 <div class="card-header " id="headingPage">
-                                                    <a class="d-block text-decoration-none text-light" data-toggle="collapse" data-target="#collapsePage"
+                                                    <a class="d-block text-decoration-none text-light"
+                                                        data-toggle="collapse" data-target="#collapsePage"
                                                         aria-expanded="true" aria-controls="collapsePage">
                                                         Trang đơn
                                                     </a>
@@ -192,10 +174,11 @@
                                                 </div>
                                             </div>
                                             <!-- end card -->
-    
+
                                             <div class="card bg-dark">
                                                 <div class="card-header" id="headingCustom">
-                                                    <a class="d-block text-decoration-none text-light" data-toggle="collapse" data-target="#collapseCustom"
+                                                    <a class="d-block text-decoration-none text-light"
+                                                        data-toggle="collapse" data-target="#collapseCustom"
                                                         aria-expanded="true" aria-controls="collapseCustom">
                                                         Tùy liên kết
                                                     </a>
@@ -224,7 +207,7 @@
                                                 </div>
                                             </div>
                                             <!-- end card -->
-    
+
                                             <div class="card p-3 bg-dark">
                                                 <label for="status">Trạng thái</label>
                                                 <select name="status" id="status" class="form-control" required>
@@ -235,79 +218,77 @@
                                         </div>
             </form>
         </div>
-    
-    
+
+
         <div class="col-md-8">
-    
+
             <table class="table table-bordered table-hover table-striped">
                 <thead>
                     <tr>
                         <th class="text-center bg-dark" style="width:30px">#</th>
-    
+
                         <th class="text-center bg-dark">Tên Menu</th>
                         <th class="text-center bg-dark">Liên kết</th>
                         <th class="text-center bg-dark">Vị trí</th>
-    
-                        <th class="text-center bg-dark" style="width:140px">Chức năng</th>
+
+                        <th class="text-center bg-dark" style="width:200px">Chức năng</th>
                         <th class="text-center bg-dark" style="width:30px">ID</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($list as $row)
-                                                        @php
-                                                            $args = ['id' => $row->id];
-                                                        @endphp
+                        @php
+                            $args = ['id' => $row->id];
+                        @endphp
 
-                                                        <tr>
-                                                            <td class="text-center">
-                                                                <input type="checkbox" />
-                                                            </td>
-                                                            <td class="text-center">
-                                                                {{ $row->name }}
-                                                            </td>
-                                                            <td class="text-center">
-                                                                {{ $row->link }}
-                                                            </td>
+                        <tr>
+                            <td class="text-center">
+                                <input type="checkbox" />
+                            </td>
+                            <td class="text-center">
+                                {{ $row->name }}
+                            </td>
+                            <td class="text-center">
+                                {{ $row->link }}
+                            </td>
 
-                                                            <td class="text-center">
-                                                                {{ $row->position }}
-                                                            </td>
+                            <td class="text-center">
+                                {{ $row->position }}
+                            </td>
 
 
-                                                            <td class="text-center">
-                                                                <a href="{{ route('admin.menu.status', $args) }}"
-                                                                    class="btn btn-sm btn-dark">
-                                                                    <i class="fas fa-toggle-off"></i>
-                                                                </a>
-                                                                <a href="{{ route('admin.menu.status', $args) }}"
-                                                                    class="btn btn-sm btn-success">
-                                                                    <i class="fas fa-toggle-on"></i>
-                                                                </a>
-                                                                <a
-                                                                    href="{{ route('admin.menu.show', $args) }}"class="btn btn-sm btn-info">
-                                                                    <i class="far fa-eye"></i>
-                                                                </a>
-                                                                <a href="{{ route('admin.menu.edit', $args) }}"
-                                                                    class="btn btn-sm btn-primary">
-                                                                    <i class="far fa-edit"></i>
-                                                                </a>
-                                                                <a href="{{ route('admin.menu.delete', $args) }}"
-                                                                    class="btn btn-sm btn-danger">
-                                                                    <i class="fas fa-trash"></i>
-                                                                </a>
-                                                            <td class="text-center">{{ $row->id }}</td>
-                                                        </tr>
-                                                    @endforeach
+                            <td class="text-center">
+                                @if ($row->status == 2)
+                                    <a href="{{ route('admin.menu.status', $args) }}" class="btn btn-sm btn-dark">
+                                        <i class="fas fa-toggle-off"></i>
+                                    </a>
+                                @else
+                                    <a href="{{ route('admin.menu.status', $args) }}" class="btn btn-sm btn-success">
+                                        <i class="fas fa-toggle-on"></i>
+                                    </a>
+                                @endif
+                                <a href="{{ route('admin.menu.show', $args) }}"class="btn btn-sm btn-info">
+                                    <i class="far fa-eye"></i>
+                                </a>
+                                <a href="{{ route('admin.menu.edit', $args) }}" class="btn btn-sm btn-primary">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a href="{{ route('admin.menu.delete', $args) }}" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            <td class="text-center">{{ $row->id }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
-        </div>
-        </div>
-        </section>
-        <!-- /.CONTENT -->
-        </div>
-        </form>
-        </div>
+    </div>
+    </div>
+    </section>
+    <!-- /.CONTENT -->
+    </div>
+    </form>
+    </div>
     </div>
 @endsection
 @section('header')

@@ -1,8 +1,23 @@
 <section class="slider">
-    <div class="slider-container">
-        <img class="slider-img-1" src="./img/slide1.png">
-        <img class="slider-img-2" src="./img/slide2.png">
-        <img class="slider-img-3" src="./img/slide3.png">
+    <div class="slide">
+
+        @foreach ($list_slider as $row_slider)
+            @if ($loop->first)
+                <img class="slide active" src="{{ asset('img/banners/'.$row_slider->image) }}">
+            @else
+            <img class="slide" src="{{ asset('img/banners/'.$row_slider->image) }}">
+            @endif
+        @endforeach
+        <a href="#" class="prev">&#10094;</a>
+        <a href="#" class="next">&#10095;</a>
 
     </div>
+
+
+
+    
 </section>
+
+<script>
+    
+</script>

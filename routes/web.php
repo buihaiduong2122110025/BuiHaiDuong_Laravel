@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\backend\BannerController;
 use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\CategoryController;
@@ -16,33 +17,34 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\frontend\HomeController;
-use App\Http\Controllers\frontend\ProductController  as SanPhamController;
-use App\Http\Controllers\frontend\ContactController  as LienHeController;
+use App\Http\Controllers\frontend\ProductController  as FProductController;
+use App\Http\Controllers\frontend\ContactController  as FContactController;
 use App\Http\Controllers\frontend\WelcomeController;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Product;
 use App\Models\Menu;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('product', [SanPhamController::class, 'index']);
-Route::get('product-detail', [SanPhamController::class, 'product_detail']);
+Route::get('/', [HomeController::class, 'index'])->name('site.home');
+Route::get('product', [FProductController::class, 'index']);
+
+Route::get('category/{slug}', [FProductController::class, 'category'])->name('site.product.category');
+
+Route::get('product-detail/{slug}', [FProductController::class, 'product_detail'])->name('site.product.detail');
 // Route::get('detail',[ProductController::class,'product_detail']);
 
-Route::get('contact', [LienHeController::class, 'index']);
+Route::get('contact', [FContactController::class, 'index']);
 Route::get('blog', [BlogController::class, 'index']);
 
 //
-Route::get('welcome', [WelcomeController::class, 'index']);
-//
+Route::get('login', [AuthController::class, 'getlogin'])->name('website.getlogin');
+Route::post('login', [AuthController::class, 'dologin'])->name('website.dologin');
+Route::get('logout', [AuthController::class, 'logout'])->name('website.logout');
 
 
 
-// Route::get('admin',[AdminController::class,'index']);
-
-// Route::get('adminproduct',[AdminProductController::class,'index']);
-
-Route::prefix("admin")->group(function () {
+Route::prefix("admin")->middleware("middleauth")->group(function () {
+    // Route::prefix("admin")->group(function () {
 
     Route::get("/", [DashboradController::class, "index"])->name("admin.dashbroad.index");
 
@@ -113,19 +115,6 @@ Route::prefix("admin")->group(function () {
         Route::delete("destroy/{id}", [ContactController::class, "destroy"])->name("admin.contact.destroy");
     });
 
-    Route::prefix("menu")->group(function () {
-        Route::get("/", [MenuController::class, "index"])->name("admin.menu.index");
-        Route::get("trash", [MenuController::class, "trash"])->name("admin.menu.trash");
-        Route::get("create", [MenuController::class, "create"])->name("admin.menu.create");
-        Route::post("store", [MenuController::class, "store"])->name("admin.menu.store");
-        Route::get("edit/{id}", [MenuController::class, "edit"])->name("admin.menu.edit");
-        Route::get("show/{id}", [MenuController::class, "show"])->name("admin.menu.show");
-        Route::put("update/{id}", [MenuController::class, "update"])->name("admin.menu.update");
-        Route::get("status/{id}", [MenuController::class, "status"])->name("admin.menu.status");
-        Route::get("delete/{id}", [MenuController::class, "delete"])->name("admin.menu.delete");
-        Route::get("restore/{id}", [MenuController::class, "restore"])->name("admin.menu.restore");
-        Route::delete("destroy/{id}", [MenuController::class, "destroy"])->name("admin.menu.destroy");
-    });
 
     Route::prefix("menu")->group(function () {
         Route::get("/", [MenuController::class, "index"])->name("admin.menu.index");
@@ -156,19 +145,7 @@ Route::prefix("admin")->group(function () {
         Route::delete("destroy/{id}", [OrderController::class, "destroy"])->name("admin.order.destroy");
     });
 
-    Route::prefix("order")->group(function () {
-        Route::get("/", [OrderController::class, "index"])->name("admin.order.index");
-        Route::get("trash", [OrderController::class, "trash"])->name("admin.order.trash");
-        Route::get("create", [OrderController::class, "create"])->name("admin.order.create");
-        Route::post("store", [OrderController::class, "store"])->name("admin.order.store");
-        Route::get("edit/{id}", [OrderController::class, "edit"])->name("admin.order.edit");
-        Route::get("show/{id}", [OrderController::class, "show"])->name("admin.order.show");
-        Route::put("update/{id}", [OrderController::class, "update"])->name("admin.order.update");
-        Route::get("status/{id}", [OrderController::class, "status"])->name("admin.order.status");
-        Route::get("delete/{id}", [OrderController::class, "delete"])->name("admin.order.delete");
-        Route::get("restore/{id}", [OrderController::class, "restore"])->name("admin.order.restore");
-        Route::delete("destroy/{id}", [OrderController::class, "destroy"])->name("admin.order.destroy");
-    });
+   
 
     Route::prefix("orderdetail")->group(function () {
         Route::get("/", [OrderController::class, "orderdetail"])->name("admin.orderdetail.index");
