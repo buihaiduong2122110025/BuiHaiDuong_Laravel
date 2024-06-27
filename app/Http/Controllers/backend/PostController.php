@@ -68,17 +68,27 @@ class PostController extends Controller
        $post->topic_id = $request->topic_id;
        $post->description = $request->description;
        $post->type = $request->type;
+       $post->slug = Str::of($request->title)->slug('-');
+
        $post->detail = $request->detail;
         //up anh
+
         if ($request->image) {
-            $fileName = date('YmdHis') . '.' . $request->image->extension();
-            $request->image->move(public_path('img/posts/'), $fileName);
-           $post->image = $fileName;
+            $exten = $request->file("image")->extension();
+            if (in_array($exten, ["png", "jpg", "jpeg", "git", "webp"])) {
+                $fileName = $post->slug . "." . $exten;
+                $request->image->move(public_path('img/posts/'), $fileName);
+                $post->image = $fileName;
+            }
         }
+        // if ($request->image) {
+        //     $fileName = date('YmdHis') . '.' . $request->image->extension();
+        //     $request->image->move(public_path('img/posts/'), $fileName);
+        //    $post->image = $fileName;
+        // }
         //end
 
        $post->status = $request->status;
-       $post->slug = Str::of($request->name)->slug('-');
        $post->created_at = date('Y-m-d H:i:s');
        $post->created_by = Auth::id() ?? 1;
 
@@ -207,6 +217,9 @@ class PostController extends Controller
         $post->description=$request->description;
         $post->topic_id=$request->topic_id;
         $post->type=$request->type;
+        
+        $post->slug=Str::of($request->title)->slug('-');
+
         // $post->image=$request->image;
         if ($request->image) {
             $exten = $request->file("image")->extension();
@@ -217,7 +230,6 @@ class PostController extends Controller
             }
         }
         $post->status=$request->status;
-        $post->slug=Str::of($request->name)->slug('-');
         $post->updated_at=date('Y-m-d H:i:s');
         $post->updated_by=Auth::id()??1;
 

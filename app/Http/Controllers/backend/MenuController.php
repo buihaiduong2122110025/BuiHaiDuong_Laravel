@@ -22,7 +22,7 @@ class MenuController extends Controller
         $list_category = Category::where('status', '!=', '0')->orderBy('created_at', 'desc')->get();
         $list_brand = Brand::where('status', '!=', '0')->orderBy('created_at', 'desc')->get();
         $list_topic = Topic::where('status', '!=', '0')->orderBy('created_at', 'desc')->get();
-        $list_post = Post::where([['status', '!=', '0'], ['type', '=', 'post']])->orderBy('created_at', 'desc')->get();
+        $list_post = Post::where([['status', '!=', '0']])->orderBy('created_at', 'desc')->get();
             return view('backend/menu/index',compact("list","list_category","list_brand","list_topic","list_post"));
 
     }
@@ -40,91 +40,132 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        $userId = Auth::id();
-        $position = $request->position;
-        $status = $request->status;
 
-
-        if ($request->has('createCategory') && $request->categories) {
-            foreach ($request->categories as $categoryId) {
-                $category = Category::find($categoryId);
-                if ($category) {
-                    $parentCategory = $category->parent;
-                    $parentSlug = $parentCategory ? $parentCategory->slug : '';
-                    $parentId = $parentCategory ? $parentCategory->id : null;
-                    $parentSlug = $category->parent ? $category->parent->slug : '';
-                    Menu::create([
-                        'name' => $category->name,
-                        'link' => 'category' . $parentSlug . '/' . $category->slug,
-                        'position' => $position,
-                        'status' => $status,
-                        'parent_id' => $parentId, // Thêm trường parent_id
-                        'created_by' => Auth::id() ?? 1,
-                        'type' => 'category'
-                    ]);
+            if(isset($request->createCategory)){
+                $listid =$request->categoryid;
+                if($listid){
+                    foreach($listid as $id){
+                        $category = Category::find($id);
+                        if($category != null){
+                            $menu = new Menu();
+                            $menu->name = $category->name;
+                            $menu->link = 'category/' . $category->slug;
+                            $menu->sort_order = 0;
+                            $menu->parent_id = 0;
+                            $menu->type = 'category';
+                            $menu->position =$request->position;
+                            $menu->table_id = $id;
+                            $menu->created_at = date('Y-m-d H:i:s');
+                            $menu->created_by = Auth::id() ?? 1;
+                            $menu->status = $request->status;
+                            $menu->save(); 
+                        }
+                    }
+                    return redirect()->route('admin.menu.index');
+                }else{
+                    echo"khong co";
                 }
             }
-        }
 
-        if ($request->has('createBrand') && $request->brands) {
-            foreach ($request->brands as $brandId) {
-                $brand = Brand::find($brandId);
-                if ($brand) {
-                    Menu::create([
-                        'name' => $brand->name,
-                        'link' => 'thuong-hieu' . $brand->slug,
-                        'position' => $position,
-                        'status' => $status,
-                        'created_by' => Auth::id() ?? 1,
-                        'type' => 'brand'
-                    ]);
+            if(isset($request->createBrand)){
+                $listid =$request->brandid;
+                if($listid){
+                    foreach($listid as $id){
+                        $brand = Brand::find($id);
+                        if($brand != null){
+                            $menu = new Menu();
+                            $menu->name = $brand->name;
+                            $menu->link = 'brand/' . $brand->slug;
+                            $menu->sort_order = 0;
+                            $menu->parent_id = 0;
+                            $menu->type = 'brand';
+                            $menu->position =$request->position;
+                            $menu->table_id = $id;
+                            $menu->created_at = date('Y-m-d H:i:s');
+                            $menu->created_by = Auth::id() ?? 1;
+                            $menu->status = $request->status;
+                            $menu->save(); 
+                        }
+                    }
+                    return redirect()->route('admin.menu.index');
+                }else{
+                    echo"khong co";
                 }
-            }
-        }
 
-        if ($request->has('createTopic') && $request->topics) {
-            foreach ($request->topics as $topicId) {
-                $topic = Topic::find($topicId);
-                if ($topic) {
-                    Menu::create([
-                        'name' => $topic->name,
-                        'link' => 'chu-de' . $topic->slug,
-                        'position' => $position,
-                        'status' => $status,
-                        'created_by' => Auth::id() ?? 1,
-                        'type' => 'topic'
-                    ]);
+            }
+            if(isset($request->createTopic)){
+                $listid =$request->topicid;
+                if($listid){
+                    foreach($listid as $id){
+                        $topic = Topic::find($id);
+                        if($topic != null){
+                            $menu = new Menu();
+                            $menu->name = $topic->name;
+                            $menu->link = 'topic/' . $topic->slug;
+                            $menu->sort_order = 0;
+                            $menu->parent_id = 0;
+                            $menu->type = 'topic';
+                            $menu->position =$request->position;
+                            $menu->table_id = $id;
+                            $menu->created_at = date('Y-m-d H:i:s');
+                            $menu->created_by = Auth::id() ?? 1;
+                            $menu->status = $request->status;
+                            $menu->save(); 
+                        }
+                    }
+                    return redirect()->route('admin.menu.index');
+                }else{
+                    echo"khong co";
                 }
-            }
-        }
 
-        if ($request->has('createPage') && $request->pages) {
-            foreach ($request->pages as $pageId) {
-                $page = Post::find($pageId);
-                if ($page) {
-                    Menu::create([
-                        'name' => $page->title,
-                        'link' => 'trang-don' . $page->slug,
-                        'position' => $position,
-                        'status' => $status,
-                        'created_by' => Auth::id() ?? 1,
-                        'type' => 'page'
-                    ]);
+            }
+            if(isset($request->createPage)){
+                $listid =$request->postid;
+                if($listid){
+                    foreach($listid as $id){
+                        $post = Post::where([['id','=',$id],])->first();
+                        if($post != null){
+                            $menu = new Menu();
+                            $menu->name = $post->title;
+                            $menu->link = 'page/' . $post->slug;
+                            $menu->sort_order = 0;
+                            $menu->parent_id = 0;
+                            $menu->type = 'page';
+                            $menu->position =$request->position;
+                            $menu->table_id = $id;
+                            $menu->created_at = date('Y-m-d H:i:s');
+                            $menu->created_by = Auth::id() ?? 1;
+                            $menu->status = $request->status;
+                            $menu->save(); 
+                        }
+                    }
+                    return redirect()->route('admin.menu.index');
+                }else{
+                    echo"khong co";
                 }
+
             }
-        }
+            if(isset($request->createCustom)){
+                if(isset($request->name, $request->link)){
+                    $menu = new Menu();
+                    $menu->name = $request->name;
+                    $menu->link = $request->link;
+                    $menu->sort_order = 0;
+                    $menu->parent_id = 0;
+                    $menu->type = 'custom';
+                    $menu->position =$request->position;
+                    // $menu->table_id = null;
+                    $menu->created_at = date('Y-m-d H:i:s');
+                    $menu->created_by = Auth::id() ?? 1;
+                    $menu->status = $request->status;
+                    $menu->save(); 
+                    return redirect()->route('admin.menu.index');
 
-        if ($request->has('createCustom')) {
-            Menu::create([
-                'name' => $request->name,
-                'link' => $request->link,
-                'position' => $position,
-                'created_by' => Auth::id() ?? 1,
-                'type' => 'custom'
-            ]);
-        }
+                }
 
-        return redirect()->route('admin.menu.index')->with('success', 'Menu đã được thêm thành công.');
+            }
+
+
     }
 
     /**
@@ -174,6 +215,8 @@ class MenuController extends Controller
         $menu->link = $request->link;
         $menu->position = $request->position;
         $menu->status = $request->status;
+        $menu->parent_id = $request->parent_id;
+
         $menu->updated_by = Auth::id() ?? 1;
         $menu->save();
         return redirect()->route('admin.menu.index')->with('success', 'Menu đã được cập nhật thành công.');

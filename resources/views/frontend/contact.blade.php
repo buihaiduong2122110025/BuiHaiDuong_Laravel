@@ -19,22 +19,31 @@
             </div>
             <div class="contact-form">
                 <h2>Contact Us</h2>
-                <form>
-                    <div class="form-group">
+                <form action="{{ route('website.docontact') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input type="text" id="name" placeholder="Enter Name" name="name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" placeholder="Enter Email" name="email" required>
+                        <input id="email" placeholder="Enter Email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Message:</label>
-                        <textarea id="message" name="message" placeholder="Enter Message" required></textarea>
+                        <label for="phone">Phone:</label>
+                        <input type="phone" id="phone" placeholder="Enter Phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="title" id="title" placeholder="Enter Title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Content:</label>
+                        <textarea id="content" name="content" placeholder="Enter Content" required></textarea>
                     </div>
                     <div class="btn-contact">
-                    <button  type="submit">Submit</button>
-                </div>
+                        <button type="submit">Submit</button>
+                    </div>
                 </form>
             </div>
 

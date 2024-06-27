@@ -57,6 +57,24 @@ class ProductController extends Controller
 
         return view('frontend.product_category', compact("product_list", "row"));
     }
+
+
+    public function brand($slug)
+    {
+
+        $row =  Brand::where([['slug', '=', $slug], ['status', '=', 1]])->select("id", "name", 'slug')->first();
+        // $listcatid = [];
+
+        // if ($row != null) {
+        //     $listcatid  = $this->getlistcategoryid($row->id);
+        // }
+        $product_list = Product::where('product.status', '=', 1)
+            ->whereIn('brand_id',$row)
+            ->orderBy('product.created_at', 'desc')
+            ->paginate(3);
+
+        return view('frontend.product_brand', compact("product_list", "row"));
+    }
   
     public function product_detail($slug)
     {
@@ -69,4 +87,7 @@ class ProductController extends Controller
         ->get();
         return view('frontend.product_detail', compact('product','product_list'));
     }
+
+   
+    
 }

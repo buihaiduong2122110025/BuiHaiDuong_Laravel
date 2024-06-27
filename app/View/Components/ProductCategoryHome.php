@@ -27,7 +27,7 @@ class ProductCategoryHome extends Component
             ['parent_id','=','0']
 
         ];
-        $category_list = Category::where($args_category)->orderBy('sort_order','asc')->get();
+        $category_list = Category::where($args_category)->orderBy('sort_order','asc')->limit(3)->get();
         
         return view('components.product-category-home',compact('category_list'));
     }

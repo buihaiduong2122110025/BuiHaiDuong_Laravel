@@ -23,9 +23,9 @@ class PostRelated extends Component
     public function render(): View|Closure|string
     {
         
-        $post_list = Post::where('status', '!=', 0)
+        $post_list = Post::where([['post.status', '=', 1],['type','=','post']])
         ->orderBy('created_at', 'desc')
-        ->limit(2)
+        ->limit(3)
         ->get();
 
     return view('components.post-related', compact("post_list"));

@@ -26,6 +26,7 @@ class ProductSale extends Component
     {
         $product_list = Product::where([['status', '=', 1], ['pricesale', '<', '100']])
             ->orderBy('created_at', 'desc')
+            ->limit(3)
             ->get();
 
         return view('components.product-sale', compact("product_list"));

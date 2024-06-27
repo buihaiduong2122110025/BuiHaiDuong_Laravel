@@ -1,34 +1,4 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{{ route('website.dologin') }}" method="post" enctype="multipart/form-data">
-        @csrf
 
-    <div class="col-md-8">
-        <div class="mb-3">
-           <label for="username" class="text-main">Tên tài khoản (*)</label>
-           <input type="text" name="username" id="username" class="form-control" placeholder="Nhập tài khoản đăng nhập" required>
-        </div>
-        <div class="mb-3">
-           <label for="password" class="text-main">Mật khẩu (*)</label>
-           <input type="password" name="password" id="password" class="form-control" placeholder="Mật khẩu" required>
-        </div>
-        <div class="mb-3">
-           <button class="btn btn-main"  type="submit">Đăng nhập</button>
-        </div>
-        
-        <p><u class="text-main">Chú ý</u>: (*) Thông tin bắt buộc phải nhập</p>
-        
-     </div>
-    </form>
-</body>
-</html> --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,11 +7,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('css/css1.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/css2.css') }}">
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+   
 
+    
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('js/js.js') }}"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poetsen+One&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poetsen+One&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poetsen+One&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/path/to/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poetsen+One&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poetsen+One&family=Raleway:ital,wght@0,100..900;1,100..900&family=Reddit+Mono:wght@200..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="jquery-3.7.1.min.js"></script>
     <title></title>
 </head>
 
@@ -49,7 +59,7 @@
 
     <div>
         <div>
-          {{-- <x-mainmenu/> --}}
+          <x-mainmenu/>
         </div>
     </div>
 
@@ -58,7 +68,11 @@
         <div>
             <div>
             <div class="login">
-                
+                <div>
+                    <a>
+                        Exit
+                    </a>
+                </div>
                 <img src="./img/bg-login.webp" alt="login image" class="login__img">
         
                 <form action="{{ route('website.dologin') }}" class="login__form" method="post" enctype="multipart/form-data">
@@ -100,7 +114,7 @@
                     <button type="submit" class="login__button">Login</button>
         
                     <p class="login__register text-light">
-                        Don't have an account? <a class="text-decoration-none" href="#">Register</a>
+                        Don't have an account? <a class="text-decoration-none" href="register">Register</a>
                     </p>
                 </form>
                 
@@ -108,63 +122,33 @@
         
         </div>
     </main>
-
-
-
-    {{-- <footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2C7JUaY4JwqLDIrZU1/4hqe0QieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQlNQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR76c+pLBnDW09R7VQX9Mdii05ZgVCp5vVH3jGth7HO/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @if (Session::has('message'))
+    <script>
+      toastr.options = {
+        "progressBar": true,
+        "closeButton": true
+      }
+      toastr.error("{{ Session::get('message') }}");
+    </script>
+    @endif
+    
+    <footer>
         <div>
-            <footer>
-                <div class="footer-container">
-                    <div class="footer-column">
-                        <h4>About Us</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in eleifend justo, eget
-                            cursus ipsum. Mauris ornare justo id nibh vulputate, in consectetur nunc ultrices.</p>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <x-footermenu/>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Help</h4>
-                        <ul>
-
-                            <li><a href="index.html">Help Center</a></li>
-                            <li><a href="product.html">Shipping</a></li>
-                            <li><a href="contact.html">Returns</a></li>
-                            <li><a href="blog.html">Contact US</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Contact Us</h4>
-                        <p>Address: 103 Tăng Nhơn Phú, Phước Long B, Quận 9, Thành phố Hồ Chí Minh, Việt Nam</p>
-                        <p>Phone: 0981992900</p>
-                        <p>Email: dayduongtui@gmail.com</p>
-                        <div class="icon-1-2">
-                            <div class="img-1"><img src="{{ asset('img/fb.png') }}   ">
-
-                            </div>
-                            <div class="img-2"><img src="{{ asset('img/int.png') }}   ">
-
-                            </div>
-                            <div class="img-3"><img src="{{ asset('img/twitter.png') }} ">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; Copyright © 2024 D1_Shop.com. All rights reserved.. Designed by Dương</p>
-
-                </div>
-            </footer>
+          <x-footermenu/>
         </div>
     </footer>
     @yield('footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <script src="{{ asset('js/script.js') }}"></script> --}}
+    <script src="{{ asset('js/script.js') }}"></script>
+    <script>
+        
+    </script>
 </body>
 
 

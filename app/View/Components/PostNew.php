@@ -22,12 +22,12 @@ class PostNew extends Component
      */
     public function render(): View|Closure|string
     {
-        $post_list = Post::where('status', '!=', 0)
+        $post = Post::where('status', '!=', 0)
         ->orderBy('created_at', 'asc')
         ->limit(1)
         ->get();
 
-    return view('components.post-new', compact("post_list"));
+    return view('components.post-new', compact("post"));
         // return view('components.post-new');
     }
 }

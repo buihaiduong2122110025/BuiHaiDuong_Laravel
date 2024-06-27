@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('css/css1.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/js.js') }}">
+    <link rel="stylesheet" href="{{ asset('css/css2.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybU5rKkD5on6m9ZI7SxxQ5H8f6+ZP5hLgWAI7T0z76ofe2IO5" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyJgD0b5f1Mr6TZflDHT7TX60Ga6IQEQpZLK5HA46Zyy5tF4h6S5pEx" crossorigin="anonymous"></script>
+    
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('js/js.js') }}"> --}}
@@ -44,6 +46,8 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="jquery-3.7.1.min.js"></script>
+
 </head>
 
 <body>
@@ -51,6 +55,7 @@
     <header>
         <div>
             <div>
+
                 <x-mainmenu />
             </div>
         </div>
@@ -66,13 +71,91 @@
 
     <footer>
         <div>
-          <x-footermenu/>
+            <x-footermenu />
         </div>
     </footer>
     @yield('footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+   
 
-    <script src="{{ asset('js/script.js') }}"></script>
+
+        $(document).ready(function() {
+            $('#list-view').click(function() {
+                $('.btn-view').removeClass('active');
+                $(this).addClass('active');
+                $('#product-list').removeClass('grid-view').addClass('list-view');
+            });
+
+            $('#grid-view').click(function() {
+                $('.btn-view').removeClass('active');
+                $(this).addClass('active');
+                $('#product-list').removeClass('list-view').addClass('grid-view');
+            });
+        });
+    </script>
+
+    {{-- <script src="{{ asset('js/script.js') }}"></script> --}}
+    <script>
+        $(document).ready(function() {
+            $('#search-input').on('keyup', function() {
+                var query = $(this).val();
+                console.log('Query: ', query);
+
+                if (query.length > 2) {
+                    $.ajax({
+                        url: "{{ route('site.autocomplete') }}",
+                        type: "GET",
+                        data: {
+                            'query': query
+                        },
+                        success: function(data) {
+                            console.log('Data: ', data);
+                            var suggestions = '';
+
+                            if (data.length > 0) {
+                                data.forEach(function(item) {
+                                    suggestions += '<a href="' + item.detail_url +
+                                        '" class="suggestion-item-link">';
+                                    suggestions += '<div class="suggestion-item">';
+                                    suggestions += '<img src="' + item.image_url +
+                                        '" alt="' + item.name +
+                                        '" class="suggestion-image" style="width: 50px; height: 50px; margin-right: 10px;">';
+                                    suggestions += item.name + '</div>';
+                                    suggestions += '</a>';
+                                });
+                            } else {
+                                suggestions +=
+                                    '<div class="suggestion-item">No results found</div>';
+                            }
+
+                            $('#suggestions-box').html(suggestions).show();
+                        },
+                        error: function(xhr, status, error) {
+                            console.log('Error: ', error);
+                        }
+                    });
+                } else {
+                    $('#suggestions-box').hide();
+                }
+            });
+
+            $(document).on('click', '.suggestion-item', function() {
+                var text = $(this).text();
+                $('#search-input').val(text);
+                $('#suggestions-box').hide();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.navbar-toggler').click(function() {
+                $('.menu-content-mobile').slideToggle();
+            });
+        });
+    </script>
+    
 </body>
 
 </html>

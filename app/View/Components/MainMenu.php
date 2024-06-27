@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use App\Models\Menu;
+use App\Models\Product;
 use App\Models\User;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -41,7 +42,11 @@ class MainMenu extends Component
         // ->orderBy('created_at','desc')->get();
         $user = Auth::user();
         //log Ok thì truyền vô
+        $search_list = Product::where('product.status', '=', 1)
+        ->orderBy('product.created_at', 'desc')
+        // ->limit(3)
+        ->get();
 
-        return view('components.main-menu',compact('list_menu','user'));
+        return view('components.main-menu',compact('list_menu','user','search_list'));
     }
 }

@@ -3,13 +3,15 @@
         <div class="image-container">
             <img src="{{ asset('img/products/' . $product->image) }}" class="img-fluid"alt="{{ $product->image }}">
             <i class="fas fa-heart"></i>
+            <div class="overlay">Xem thêm</div>
+
         </div>
         <h3>{{ $product->name }}</h3>
-        <h5>${{ $product->price }}</h5>
+        <h5>${{ $product->pricesale }}</h5>
     </a>
     <div class="price-sale">
 
-        <h5 class="price-gacc">${{ $product->pricesale }}</h5>
+        <h5 class="price-gacc">${{ $product->price }}</h5>
         <h5 class="price-phamtram">-50%</h5>
 
     </div>

@@ -23,7 +23,7 @@ class Post extends Component
     public function render(): View|Closure|string
     {
 
-        $post_list = ModelsPost::where('post.status', '!=', 0)
+        $post_list = ModelsPost::where([['post.status', '=', 1],['type','=','post']])
         ->orderBy('created_at', 'desc')
         ->limit(3)
         ->get();

@@ -65,17 +65,17 @@
                                                         @foreach ($list_category as $category)
                                                             <div class="form-check mb-2">
                                                                 <input class="form-check-input" type="checkbox"
-                                                                    name="categories[]" value="{{ $category->id }}"
-                                                                    id="categoryId{{ $category->id }}">
+                                                                    name="categoryid[]" value="{{ $category->id }}"
+                                                                    id="category{{ $category->id }}">
                                                                 <label class="form-check-label"
-                                                                    for="categoryId{{ $category->id }}">
+                                                                    for="category{{ $category->id }}">
                                                                     {{ $category->name }}
                                                                 </label>
                                                             </div>
                                                         @endforeach
                                                         <div class="mb-3">
-                                                            <button type="submit" name="createCategory"
-                                                                class="btn btn-success">Thêm menu</button>
+                                                            <input type="submit" name="createCategory"
+                                                                class="btn btn-success" value="Thêm menu"></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -96,17 +96,17 @@
                                                         @foreach ($list_brand as $brand)
                                                             <div class="form-check mb-2">
                                                                 <input class="form-check-input" type="checkbox"
-                                                                    name="brands[]" value="{{ $brand->id }}"
-                                                                    id="brandId{{ $brand->id }}">
+                                                                    name="brandid[]" value="{{ $brand->id }}"
+                                                                    id="brand{{ $brand->id }}">
                                                                 <label class="form-check-label"
-                                                                    for="brandId{{ $brand->id }}">
+                                                                    for="brand{{ $brand->id }}">
                                                                     {{ $brand->name }}
                                                                 </label>
                                                             </div>
                                                         @endforeach
                                                         <div class="mb-3">
-                                                            <button type="submit" name="createBrand"
-                                                                class="btn btn-success">Thêm menu</button>
+                                                            <input type="submit" name="createBrand"
+                                                                class="btn btn-success" value="Thêm menu"></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -127,17 +127,17 @@
                                                         @foreach ($list_topic as $topic)
                                                             <div class="form-check mb-2">
                                                                 <input class="form-check-input" type="checkbox"
-                                                                    name="topics[]" value="{{ $topic->id }}"
-                                                                    id="topicId{{ $topic->id }}">
+                                                                    name="topicid[]" value="{{ $topic->id }}"
+                                                                    id="topic{{ $topic->id }}">
                                                                 <label class="form-check-label"
-                                                                    for="topicId{{ $topic->id }}">
+                                                                    for="topic{{ $topic->id }}">
                                                                     {{ $topic->name }}
                                                                 </label>
                                                             </div>
                                                         @endforeach
                                                         <div class="mb-3">
-                                                            <button type="submit" name="createTopic"
-                                                                class="btn btn-success">Thêm menu</button>
+                                                            <input type="submit" name="createTopic"
+                                                                class="btn btn-success" value="Thêm menu"></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -155,20 +155,20 @@
                                                 <div id="collapsePage" class="collapse" aria-labelledby="headingPage"
                                                     data-parent="#accordionExample">
                                                     <div class="card-body">
-                                                        @foreach ($list_post as $page)
+                                                        @foreach ($list_post as $post)
                                                             <div class="form-check mb-2">
                                                                 <input class="form-check-input" type="checkbox"
-                                                                    name="pages[]" value="{{ $page->id }}"
-                                                                    id="pageId{{ $page->id }}">
+                                                                    name="postid[]" value="{{ $post->id }}"
+                                                                    id="post{{ $post->id }}">
                                                                 <label class="form-check-label"
-                                                                    for="pageId{{ $page->id }}">
-                                                                    {{ $page->title }}
+                                                                    for="post{{ $post->id }}">
+                                                                    {{ $post->title }}
                                                                 </label>
                                                             </div>
-                                                        @endforeach
+                                                        @endforeach 
                                                         <div class="mb-3">
-                                                            <button type="submit" name="createPage"
-                                                                class="btn btn-success">Thêm menu</button>
+                                                            <input type="submit" name="createPage"
+                                                                class="btn btn-success" value="Thêm menu"></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -190,9 +190,9 @@
                                                             <label for="name">Tên menu</label>
                                                             <input type="text" name="name" id="name"
                                                                 class="form-control">
-                                                            @error('name')
+                                                            {{-- @error('name')
                                                                 <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
+                                                            @enderror --}}
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="link">Liên kết</label>
@@ -200,8 +200,8 @@
                                                                 class="form-control">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <button type="submit" name="createCustom"
-                                                                class="btn btn-success">Thêm menu</button>
+                                                            <input type="submit" name="createCustom"
+                                                            class="btn btn-success" value="Thêm menu"></button>
                                                         </div>
                                                     </div>
                                                 </div>

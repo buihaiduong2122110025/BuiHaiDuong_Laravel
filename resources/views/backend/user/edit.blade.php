@@ -104,8 +104,9 @@
                                                 <div class="mb-3">
                                                     <label for="roles">Quyền</label>
                                                     <select name="roles" id="roles" class="form-control">
-                                                        <option value="customer">Khách hàng</option>
                                                         <option value="admin">Quản lý</option>
+                                                        <option value="customer">Khách hàng</option>
+
                                                         {{ old('roles',$user->roles) }}
                                                     </select>
                                                 </div>

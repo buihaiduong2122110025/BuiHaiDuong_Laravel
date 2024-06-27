@@ -36,15 +36,18 @@
             <p>Phone: 0981992900</p>
             <p>Email: dayduongtui@gmail.com</p>
             <div class="icon-1-2">
+                <a href="https://www.facebook.com/profile.php?id=100025172497044">
                 <div class="img-1"><img src="{{ asset('img/fb.png') }}   ">
-
                 </div>
+            </a>
+            <a href="https://www.instagram.com/">
                 <div class="img-2"><img src="{{ asset('img/int.png') }}   ">
-
                 </div>
+            </a>
+            <a href="https://www.youtube.com/channel/UCH9Yh4bWXyXpUWHaa9E2vmQ">
                 <div class="img-3"><img src="{{ asset('img/twitter.png') }} ">
-
                 </div>
+            </a>
             </div>
         </div>
     </div>

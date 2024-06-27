@@ -13,7 +13,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <strong class="text-dark text-lg">CẬT NHÂT THƯƠNG HIỆU</strong>
+                            <strong class="text-dark text-lg">CẬT NHÂT BÀI VIẾT</strong>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -48,6 +48,10 @@
                                 @error('title')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="slug">Slug</label>
+                                <textarea name="slug" id="slug" rows="8" class="form-control">{{ old('slug',$post->slug) }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="detail">Chi tiết</label>

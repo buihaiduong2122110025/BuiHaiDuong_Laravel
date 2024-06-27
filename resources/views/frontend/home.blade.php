@@ -2,7 +2,7 @@
 @section('title', 'Trang Chủ')
 @section('content')
     <div>
-        
+       
         <x-slider />
         <div class="container ">
             <div class="product-category-main">
@@ -12,7 +12,7 @@
             <div class="product-main">
                 <x-productsale />
                 <x-productnew />
-                <x-productcategoryhome/>
+                <x-productcategoryhome />
 
             </div>
         </div>

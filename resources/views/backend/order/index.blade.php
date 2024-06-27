@@ -50,7 +50,7 @@
                                     <th class="text-center bg-dark">Tên Khách Hàng</th>
                                     <th class="text-center bg-dark">Email</th>
                                     <th class="text-center bg-dark">Phone</th>
-                                    <th class="text-center bg-dark">Ngày Tạo  </th>
+                                    <th class="text-center bg-dark">Ngày Tạo </th>
                                     {{-- <th class="text-center">Mã Khách Hàng</th> --}}
                                     <th class="text-center bg-dark" style="width:170px">Chức năng</th>
                                     <th class="text-center bg-dark" style="width:30px">ID</th>
@@ -58,28 +58,28 @@
                             </thead>
                             <tbody>
                                 @foreach ($list as $row)
-                                @php
-                                $args = ['id' => $row->id];
-                            @endphp
+                                    @php
+                                        $args = ['id' => $row->id];
+                                    @endphp
                                     <tr>
                                         <td class="text-center">
                                             <input type="checkbox" />
                                         <td class="text-center">
                                             <div class="deliveryname"></div>
-                                        {{ $row->delivery_name }}
+                                            {{ $row->delivery_name }}
                                         </td>
                                         <td class="text-center">
                                             <div class="deliveryemail"></div>
-                                          {{ $row->delivery_email }}
+                                            {{ $row->delivery_email }}
                                         </td>
                                         <td class="text-center">
                                             <div class="deliveryphone"></div>
-                                           {{ $row->delivery_phone }}
+                                            {{ $row->delivery_phone }}
 
                                         </td>
                                         <td class="text-center">
                                             <div class="deliveryaddress"></div>
-                                           {{ $row->created_at }}
+                                            {{ $row->created_at }}
                                         </td>
                                         {{-- <td class="text-center">
                                     <div class="user_id"></div>
@@ -87,25 +87,22 @@
 
                                  </td> --}}
                                         <td class="text-center">
-                                          @if ($row->status == 2)
-                                        
-                                            <a href="{{ route('admin.order.status', $args) }}"
-                                                class="btn btn-sm btn-dark">
-                                                <i class="fas fa-toggle-off"></i>
-                                            </a>
+                                            @if ($row->status == 2)
+                                                <a href="{{ route('admin.order.status', $args) }}"
+                                                    class="btn btn-sm btn-dark">
+                                                    <i class="fas fa-toggle-off"></i>
+                                                </a>
                                             @else
-                                            <a href="{{ route('admin.order.status', $args) }}"
-                                                class="btn btn-sm btn-success">
-                                                <i class="fas fa-toggle-on"></i>
-                                            </a>
+                                                <a href="{{ route('admin.order.status', $args) }}"
+                                                    class="btn btn-sm btn-success">
+                                                    <i class="fas fa-toggle-on"></i>
+                                                </a>
                                             @endif
 
-                                            <a href="{{ route('admin.order.show', $args) }}"
-                                                class="btn btn-sm btn-info">
+                                            <a href="{{ route('admin.order.show', $args) }}" class="btn btn-sm btn-info">
                                                 <i class="far fa-eye"></i>
                                             </a>
-                                            <a href="{{ route('admin.order.edit', $args) }}"
-                                                class="btn btn-sm btn-primary">
+                                            <a href="{{ route('admin.order.edit', $args) }}" class="btn btn-sm btn-primary">
                                                 <i class="far fa-edit"></i>
                                             </a>
                                             <a href="{{ route('admin.order.delete', $args) }}"

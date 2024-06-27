@@ -42,7 +42,7 @@ class UserController extends Controller
        $user = new User();
        $user->name = $request->name;
        $user->username = $request->username;
-       $user->password = bcrypt($request->password);
+       $user->password = sha1($request->password);
 
        $user->gender = $request->gender;
 
@@ -138,10 +138,10 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->phone = $request->phone;
         $user->email = $request->email;
-        $user->gender = $request->gender;
+        $user->gender = $request->gender; 
         $user->address = $request->address;
         $user->username = $request->username;
-        $user->password = bcrypt($request->password);
+        $user->password = $request->password;
         if ($request->image) {
             $exten = $request->file("image")->extension();
             if (in_array($exten, ["png", "jpg", "jpeg", "git", "webp"])) {

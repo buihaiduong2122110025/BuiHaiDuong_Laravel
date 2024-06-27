@@ -98,7 +98,7 @@ class BannerController extends Controller
         if ($request->image) {
             $exten = $request->file("image")->extension();
             if (in_array($exten, ["png", "jpg", "jpeg", "git", "webp"])) {
-                $fileName = $banner->slug . "." . $exten;
+                $fileName = $banner->name . "." . $exten;
                 $request->image->move(public_path('img/banners/'), $fileName);
                 $banner->image = $fileName;
             }

@@ -12,13 +12,17 @@ use App\Http\Controllers\backend\OrderController;
 use App\Http\Controllers\backend\PostController;
 use App\Http\Controllers\backend\TopicController;
 use App\Http\Controllers\backend\UserController;
+use App\Http\Controllers\frontend\AboutController;
 use App\Http\Controllers\frontend\BlogController;
+use App\Http\Controllers\frontend\CartController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\frontend\PostController as FPostController;
 
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\ProductController  as FProductController;
 use App\Http\Controllers\frontend\ContactController  as FContactController;
+use App\Http\Controllers\frontend\SearchController;
 use App\Http\Controllers\frontend\WelcomeController;
 use Illuminate\Support\Facades\DB;
 
@@ -26,20 +30,49 @@ use App\Models\Product;
 use App\Models\Menu;
 
 Route::get('/', [HomeController::class, 'index'])->name('site.home');
-Route::get('product', [FProductController::class, 'index']);
+// Route::get('search', [SearchController::class, 'index'])->name('site.index');
 
+Route::get('product', [FProductController::class, 'index']);
+    
 Route::get('category/{slug}', [FProductController::class, 'category'])->name('site.product.category');
+Route::get('brand/{slug}', [FProductController::class, 'brand'])->name('site.product.brand');
 
 Route::get('product-detail/{slug}', [FProductController::class, 'product_detail'])->name('site.product.detail');
 // Route::get('detail',[ProductController::class,'product_detail']);
 
-Route::get('contact', [FContactController::class, 'index']);
-Route::get('blog', [BlogController::class, 'index']);
+Route::get('contact', [FContactController::class, 'getcontact'])->name('website.getcontact');
+Route::post('contact', [FContactController::class, 'docontact'])->name('website.docontact');
+
+// Route::get('blog', [BlogController::class, 'index']);
+// Route::get('about', [AboutController::class, 'index']);
+
+Route::get('post', [FPostController::class, 'index']);
+Route::get('post-detail/{slug}', [FPostController::class, 'post_detail'])->name('site.post.detail');
+Route::get('topic/{slug}', [FPostController::class, 'topic'])->name('site.post.topic');
+Route::get('page/{slug}', [FPostController::class, 'page']);
+
+
+Route::post('search', [SearchController::class, 'search'])->name('site.search');
+Route::get('autocomplete', [SearchController::class, 'autocomplete'])->name('site.autocomplete');
+Route::get('products/sort', [FProductController::class, 'sort'])->name('site.products.sort');
+
 
 //
 Route::get('login', [AuthController::class, 'getlogin'])->name('website.getlogin');
 Route::post('login', [AuthController::class, 'dologin'])->name('website.dologin');
 Route::get('logout', [AuthController::class, 'logout'])->name('website.logout');
+
+
+Route::get('register', [AuthController::class, 'getregister'])->name('website.getregister');
+Route::post('register', [AuthController::class, 'doregister'])->name('website.doregister');
+
+
+Route::get('cart/addcart', [CartController::class, 'addcart'])->name('site.cart.addcart');
+Route::get('cart', [CartController::class, 'index'])->name('site.cart.index');
+Route::post('cart/update', [CartController::class, 'update'])->name('site.cart.update');
+Route::get('cart/delete/{id}', [CartController::class, 'delete'])->name('site.cart.delete');
+Route::get('checkout', [CartController::class, 'checkout'])->name('site.cart.checkout');
+Route::post('notification', [CartController::class, 'docheckout'])->name('site.cart.docheckout');
 
 
 

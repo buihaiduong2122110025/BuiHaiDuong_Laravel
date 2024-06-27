@@ -97,6 +97,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->pricesale = $request->pricesale;
+        $product->slug = Str::of($request->name)->slug('-');
 
         //up anh
         if ($request->image) {
@@ -107,7 +108,6 @@ class ProductController extends Controller
         //end
 
         $product->status = $request->status;
-        $product->slug = Str::of($request->name)->slug('-');
         $product->created_at = date('Y-m-d H:i:s');
         $product->created_by = Auth::id() ?? 1;
 

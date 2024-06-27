@@ -1,0 +1,39 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    background-color: #343a40;
+}
+
+.pagination li {
+    list-style: none;
+    margin: 0 5px;
+}
+
+.pagination li a,
+.pagination li span {
+    color: #dc3545; /* Bootstrap's text-danger color */
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid #dee2e6; /* Bootstrap's border color */
+    border-radius: 4px;
+    background-color: #007cf7; /* Bootstrap's bg-dark color */
+}
+
+.pagination li a:hover {
+    background-color: #3da022; /* Slightly lighter shade of bg-dark */
+}
+
+.pagination li.active span {
+    background-color: #dc3545; /* text-danger background color */
+    color: white;
+    border-color: #dc3545;
+}
+
+.pagination li.disabled span,
+.pagination li.disabled a {
+    color: #6c757d; /* Bootstrap's disabled color */
+    pointer-events: none;
+    background-color: #343a40; /* Bootstrap's bg-dark color */
+    border-color: #dee2e6; /* Bootstrap's border color */
+}
