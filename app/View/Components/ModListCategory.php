@@ -31,7 +31,7 @@ class ModListCategory extends Component
         $list_brand = Brand::where('status', '=', 1)->orderBy('sort_order', 'ASC')
             ->select('name', 'slug')->get();
 
-        $list_category = Category::where([['parent_id', '=', 0], ['status', '=', 1]])
+        $list_category = Category::where([['parent_id', '!=', 10], ['status', '=', 1]])
             ->orderBy('sort_order', 'ASC')
             ->get();
 

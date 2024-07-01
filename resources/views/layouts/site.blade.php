@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('css/css2.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/css.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybU5rKkD5on6m9ZI7SxxQ5H8f6+ZP5hLgWAI7T0z76ofe2IO5" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyJgD0b5f1Mr6TZflDHT7TX60Ga6IQEQpZLK5HA46Zyy5tF4h6S5pEx" crossorigin="anonymous"></script>
     
@@ -51,7 +51,7 @@
 </head>
 
 <body>
-
+<div>
     <header>
         <div>
             <div>
@@ -94,7 +94,21 @@
                 $('#product-list').removeClass('list-view').addClass('grid-view');
             });
         });
-    </script>
+
+$(document).ready(function() {
+    $('#list-view').click(function() {
+        $('.btn-view').removeClass('active');
+        $(this).addClass('active');
+        $('#product-list').removeClass('grid-view').addClass('list-view');
+    });
+
+    $('#grid-view').click(function() {
+        $('.btn-view').removeClass('active');
+        $(this).addClass('active');
+        $('#product-list').removeClass('list-view').addClass('grid-view');
+    });
+});
+</script>
 
     {{-- <script src="{{ asset('js/script.js') }}"></script> --}}
     <script>

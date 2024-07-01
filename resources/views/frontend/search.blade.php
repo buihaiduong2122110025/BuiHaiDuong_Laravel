@@ -17,6 +17,7 @@
                     @endforeach
                     @foreach ($search_category as $categoryitem)
                         <div class="category-item">
+                            <h3>Category</h3>
                             {{-- <a href="{{ route('site.category.detail', ['slug' => $categoryitem->slug]) }}"> --}}
                                 <img src="{{ asset('img/categorys/' . $categoryitem->image) }}" class="img-fluid" alt="{{ $categoryitem->image }}">
                                 {{ $categoryitem->name }}
@@ -26,15 +27,20 @@
                     @endforeach
                     @foreach ($search_brand as $branditem)
                         <div class="brand-item">
+                            <h3>Brand</h3>
+                            
                             {{-- <a href="{{ route('site.brand.detail', ['slug' => $branditem->slug]) }}"> --}}
+                                <img src="{{ asset('img/brands/' . $branditem->image) }}" class="img-fluid" alt="{{ $branditem->image }}">
+
                                 {{ $branditem->name }}
                             {{-- </a> --}}
                         </div>
                     @endforeach
                     @foreach ($search_post as $postitem)
                         <div class="post-item">
-                            <img src="{{ asset('img/posts/' . $postitem->image) }}" class="img-fluid" alt="{{ $postitem->image }}">
+                            <h3>Post</h3>
 
+                            <img src="{{ asset('img/posts/' . $postitem->image) }}" class="img-fluid" alt="{{ $postitem->image }}">
                             {{-- <a href="{{ route('site.post.detail', ['slug' => $postitem->slug]) }}"> --}}
                                 {{ $postitem->title }}
                             </a>

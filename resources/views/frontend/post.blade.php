@@ -28,13 +28,17 @@
                             <a class="text-decoration-none" href="{{ route('site.post.detail', ['slug' => $row_post->slug]) }}">
 
                             <h3 class="title ">{{ $row_post->title }}</h3>
-                            <p class="detail">{{ $row_post->detail }}</p>
                             </a>
                         </div>
 
 
                     </div>
                 @endforeach
+
+
+                {{-- @foreach ($row_topic as  $)
+                    
+                @endforeach --}}
                
             </div>
             <div class="pagianton col-12 d-flex justify-content-center">

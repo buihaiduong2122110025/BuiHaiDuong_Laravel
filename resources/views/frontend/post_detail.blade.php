@@ -12,7 +12,18 @@
                 <h1 class="product-title">{{ $post->title }}</h1>
                 <p class="product-description">Detail : {{ $post->detail }}</p>
                 <p class="product-description">Type : {{ $post->type }}</p>
-                <p class="product-description">Topic :{{ $post->topic_id }}</p>
+
+               
+                    
+                <p class="product-description">Topic :
+                    @foreach ($list_topic as $row)
+                        
+                    {{ $row->name }} 
+
+                    @endforeach
+                </p>
+              
+
 
 
             </div>
@@ -36,11 +47,10 @@
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
                     tabindex="0">
                     <div class="product-list-all">
-                        @foreach ($post_list as $postitem )
-                        <x-postcard :$postitem />
-                            
-                        @endforeach 
-                    
+                        @foreach ($post_list as $postitem)
+                            <x-postcard :$postitem />
+                        @endforeach
+
                     </div>
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
@@ -55,12 +65,6 @@
 @section('footer')
 
 
-<script>
-
-    
-
-
-</script>
+    <script></script>
 
 @endsection
-    

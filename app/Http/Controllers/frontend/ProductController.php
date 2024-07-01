@@ -15,7 +15,7 @@ class ProductController extends Controller
 
         $product_list = Product::where('product.status', '=', 1)
             ->orderBy('product.created_at', 'desc')
-            ->paginate(3);
+            ->paginate(6);
 
         return view('frontend.product', compact("product_list"));
     }

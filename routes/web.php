@@ -52,6 +52,7 @@ Route::get('topic/{slug}', [FPostController::class, 'topic'])->name('site.post.t
 Route::get('page/{slug}', [FPostController::class, 'page']);
 
 
+Route::post('search-product', [SearchController::class, 'search_product'])->name('site.search.product');
 Route::post('search', [SearchController::class, 'search'])->name('site.search');
 Route::get('autocomplete', [SearchController::class, 'autocomplete'])->name('site.autocomplete');
 Route::get('products/sort', [FProductController::class, 'sort'])->name('site.products.sort');

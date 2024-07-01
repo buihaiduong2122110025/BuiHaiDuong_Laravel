@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Orderdetail;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,22 +19,19 @@ class OrderController extends Controller
         $list = Order::join('user', 'order.user_id', '=', 'user.id')
             ->where('order.status', '!=', 0)
             ->orderBy('order.created_at', 'desc')
-            ->select("order.id","order.delivery_name","order.delivery_email","order.delivery_phone","order.created_at","order.status", "user.id as user_id")
+            ->select("order.id", "order.delivery_name", "order.delivery_email", "order.delivery_phone", "order.created_at", "order.status", "user.id as user_id")
             ->get();
-            return view('backend/order/index',compact("list"));
-
-
-
+        return view('backend/order/index', compact("list"));
     }
 
     public function orderdetail()
     {
         $list = Orderdetail::join('product', 'orderdetail.product_id', '=', 'product.id')
-        ->join('order', 'orderdetail.order_id', '=', 'order.id')
-        ->select("orderdetail.*", "product.name as product_name", "order.id as order_id")
-        ->get();
-       
-        return view('backend.orderdetail.index',compact("list"));
+            ->join('order', 'orderdetail.order_id', '=', 'order.id')
+            ->select("orderdetail.*", "product.name as product_name", "order.id as order_id")
+            ->get();
+
+        return view('backend.orderdetail.index', compact("list"));
     }
 
 
@@ -42,11 +40,11 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $list = Order::where('status','!=',0)
-        ->orderBy('created_at','DESC')
-        ->select("id","delivery_name","delivery_email","delivery_phone")
-        ->get();
-        return view("backend.order.create",compact("list"));
+        $list = Order::where('status', '!=', 0)
+            ->orderBy('created_at', 'DESC')
+            ->select("id", "delivery_name", "delivery_email", "delivery_phone")
+            ->get();
+        return view("backend.order.create", compact("list"));
     }
 
 
@@ -63,37 +61,54 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        $orderdetail = Orderdetail::join('product', 'orderdetail.product_id', '=', 'product.id')
-        ->join('order', 'orderdetail.order_id', '=', 'order.id')
-        ->select("orderdetail.*", "product.name as product_name", "order.id as order_id")
-        ->get();
-       
-        return view('backend.orderdetail.show',compact("orderdetail"));
+        $order = Order::find($id);
+        $order_details = OrderDetail::where('order_id', $order->id)->get();
+        
+        foreach ($order_details as $detail) {
+            $detail->product = Product::find($detail->product_id);
+        }
+        
+        return view('backend.order.show', compact('order', 'order_details'));
     }
+    
+
+
+    // public function show(string $id)
+    // {
+
+    //     $order = Order::find($id);
+    //     $order_details = Orderdetail::where('order_id', $order->id) ->get();
+    //     $product = Product::where('id', '=', $order_details->product_id)->get();
+    //     return view('backend.order.show', compact('order', 'order_details','product'));
+    // }
+
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function restore(string $id){
+    public function restore(string $id)
+    {
         $order = Order::find($id);
-        if($order==null){
+        if ($order == null) {
             return redirect()->route('admin.order.index');
         }
-        $order->status=2;
-        $order->updated_at=date('Y-m-d H:i:s');
-        $order->updated_by=Auth::id()??1;
+        $order->status = 2;
+        $order->updated_at = date('Y-m-d H:i:s');
+        $order->updated_by = Auth::id() ?? 1;
 
         $order->save();
         return redirect()->route('admin.order.trash');
     }
-    public function delete(string $id){
+    public function delete(string $id)
+    {
         $order = Order::find($id);
-        if($order==null){
+        if ($order == null) {
             return redirect()->route('admin.order.index');
         }
-        $order->status=0;
-        $order->updated_at=date('Y-m-d H:i:s');
-        $order->updated_by=Auth::id()??1;
+        $order->status = 0;
+        $order->updated_at = date('Y-m-d H:i:s');
+        $order->updated_by = Auth::id() ?? 1;
 
         $order->save();
         return redirect()->route('admin.order.index');
@@ -109,22 +124,21 @@ class OrderController extends Controller
 
         return redirect()->route('admin.order.index');
     }
-    public function trash(){
-        $list = Order::where('status','=',0)
-        ->orderBy('created_at','DESC')
-        ->select("id","delivery_name","delivery_email","delivery_phone")
-        ->get();
-        return view("backend.order.trash",compact("list"));
+    public function trash()
+    {
+        $list = Order::where('status', '=', 0)
+            ->orderBy('created_at', 'DESC')
+            ->select("id", "delivery_name", "delivery_email", "delivery_phone")
+            ->get();
+        return view("backend.order.trash", compact("list"));
     }
     public function destroy(string $id)
     {
-           $order = Order::find($id);
-        if($order==null){
+        $order = Order::find($id);
+        if ($order == null) {
             return redirect()->route('admin.order.index');
         }
         $order->delete();
         return redirect()->route('admin.order.trash');
     }
-
-    
 }

@@ -165,12 +165,12 @@
                                         <p>Giỏ hàng</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{ route('admin.orderdetail.index') }}" class="nav-link">
                                         <i class="fas fa-info-circle"></i>
                                         <p>Chi Tiết Giỏ hàng</p>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item">
                                     <a href="{{ route('admin.contact.index') }}" class="nav-link">
                                         <i class="fas fa-id-card"></i>

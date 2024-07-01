@@ -1,7 +1,6 @@
 @extends('layouts.site')
 @section('title', 'Trang Chủ')
 
-
 @section('content')
     <div class="row-2">
         <x-modlistcategory />
@@ -20,23 +19,35 @@
                     <button class="btn-view" id="list-view"><i class="fas fa-th-list"></i> List View</button>
                 </div>
                 <section class="product-new">
-                    <h2>{{ $row->name }}</h2>
+                    <h2>Products</h2>
                     <div class="product-list-all" id="product-list">
-                        @foreach ($product_list as $productitem)
+
+                        {{-- <h2>Showing search results for: {{ $keywords }}</h2> --}}
+                      
+                            {{-- @if ($search_product->isEmpty() && $search_category->isEmpty() && $search_brand->isEmpty() && $search_post->isEmpty())
+                                <div class="Search-Results">
+                                    <p>No results found for the keyword: "{{ $keywords }}"</p>
+                                </div>
+                            @else --}}
+                                @foreach ($search_product as $productitem)
+                                    <x-productcard :$productitem />
+                                @endforeach
+                        {{-- @foreach ($product_list as $productitem)
                             <x-productcard :$productitem />
-                        @endforeach
+                        @endforeach --}}
                     </div>
                 </section>
-                <div class="col-12 d-flex justify-content-center">
-                    {{ $product_list->links() }}
-    
+                <div class="pagianton col-12 d-flex justify-content-center">
+                    {{-- {{ $product_list->links() }} --}}
                 </div>
             </div>
-            
-           
         </div>
     </div>
 @endsection
+
 @section('header')
     <link rel="stylesheet" href="home.css">
 @endsection
+
+
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
